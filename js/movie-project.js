@@ -1,10 +1,16 @@
 const url =
     "https://ally-amanda-movie-app.glitch.me/movies"
+let finalHtml = "";
 
 fetch(url)
-    .then(response => console.log(response))
-    .then()
-
+    .then(response => response.json())
+    .then(movies => console.log(movies))
+        // for(let i=0; i<=movies.length; i++) {
+        //     finalHtml += `<div class='movie'> <h1>${movies[i].title}</h1> <h3>${movies[i].rating}</h3> </div>`;
+        // }
+        // document.body.innerHTML = finalHtml;
+// })
+    .catch(errors => console.error(errors));
 
 
 //Adds a movie to server
