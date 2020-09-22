@@ -2,22 +2,38 @@ const url =
     "https://ally-amanda-movie-app.glitch.me/movies"
 let finalHtml = "";
 
-fetch(url)
-    .then(response => response.json())
-    .then(movies => console.log(movies))
-        // for(let i=0; i<=movies.length; i++) {
-        //     finalHtml += `<div class='movie'> <h1>${movies[i].title}</h1> <h3>${movies[i].rating}</h3> </div>`;
-        // }
-        // document.body.innerHTML = finalHtml;
-// })
-    .catch(errors => console.error(errors));
+displayMovies();
+
+//Displays the Movie List
+function displayMovies () {
+    fetch(url)
+        .then(response => response.json())
+        .then(movies => {
+            console.log(movies)
+            movies.forEach(movie => {
+                finalHtml += `<div class='movie'> <h1>${movie.title}</h1> <h3>${movie.rating}</h3> </div>`;
+            });
+            document.querySelector(".movie-container").innerHTML = finalHtml;
+        })
+        .catch(errors => console.error(errors));
+}
 
 
+document.getElementById("add-movie").addEventListener("click", function (e) {
+    e.preventDefault();
+    addMovie();
+})
+
+
+/*Functions*/
 //Adds a movie to server
 function addMovie () {
+    let userMovieTitle = document.getElementById("movie-title").value
+    let userMovieRating = document.getElementById("rating").value
+
     const movies = {
-        "title": "Great Movie",
-        "rating": 4,
+        "title": userMovieTitle,
+        "rating": userMovieRating,
     };
 
     const options = {
@@ -30,8 +46,12 @@ function addMovie () {
 
 
     fetch(url, options)
-        .then(response => console.log(response))
+        .then(response => response.json())
+        .then(movie => {
+            displayMovies();
+        })
         .catch(errors => console.log(errors));
+
 }
 
 // Edit an existing movie
