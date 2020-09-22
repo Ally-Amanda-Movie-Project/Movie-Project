@@ -1,3 +1,11 @@
+const url =
+    "https://ally-amanda-movie-app.glitch.me/movies"
+
+fetch(url)
+    .then(response => console.log(response))
+    .then()
+
+
 
 //Adds a movie to server
 function addMovie () {
@@ -5,8 +13,6 @@ function addMovie () {
         "title": "Great Movie",
         "rating": 4,
     };
-    const url =
-        "https://ally-amanda-movie-app.glitch.me/movies"
 
     const options = {
         "method": "POST",
@@ -28,8 +34,6 @@ function editMovie () {
         "title": "The Little Mermaid",
         "rating": 4,
     }
-    const url =
-         "https://ally-amanda-movie-app.glitch.me/movies/23"
 
     const options = {
         "method": "PATCH",
@@ -46,9 +50,6 @@ function editMovie () {
 
 //Delete an existing movie
 function deleteMovie () {
-
-    const url =
-        "https://ally-amanda-movie-app.glitch.me/movies/8"
 
     const options = {
         "method": "DELETE",
