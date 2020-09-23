@@ -11,9 +11,10 @@ function displayMovies () {
         .then(movies => {
             console.log(movies)
             movies.forEach(movie => {
-                finalHtml += `<div class='movie'> <h1>${movie.title}</h1> <h3>${movie.rating}</h3> </div>`;
+                finalHtml += `<a href="#" class="list-group-item list-group-item-action movie d-flex justify-content-between"><span class="text-left">${movie.title}</span><span class="text-center">${movie.title}</span><span class="text-right">${movie.rating}</span></a>`
+
             });
-            document.querySelector(".movie-container").innerHTML = finalHtml;
+            document.querySelector(".list-group").innerHTML = finalHtml;
         })
         .catch(errors => console.error(errors));
 }
