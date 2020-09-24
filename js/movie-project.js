@@ -12,11 +12,35 @@ function displayMovies () {
         .then(movies => {
             console.log(movies)
             movies.forEach(movie => {
-                finalHtml += `<a href="#" class="list-group-item list-group-item-action movie d-flex 
-justify-content-between" data-id="${movie.id}" data-target="#exampleModalCenter"><span 
-class="text-left">${movie.title}</span><span class="text-center">${movie.title}</span><span class="text-right">${movie.rating}</span></a>`
+                finalHtml += `<div class="card">
+                    <div class="card-header" id="heading${movie.id}">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${movie.id}" aria-expanded="true" aria-controls="collapse${movie.id}">
+                                ${movie.title}
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapse${movie.id}" class="collapse" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">
+                        <div class="card-body">
+                            Image: 
+                            <br>
+                            Rating: ${movie.rating}
+                            <br>
+                            Genre:
+                            <br>
+                            Review:
+                            <br>
+                            <div class="btn-group" role="group" aria-label="edit-and-delete">
+                                <button type="button" class="btn btn-secondary editMovie">Edit</button>
+                                <button type="button" class="btn btn-secondary      deleteMovie">Delete</button>     
+                           </div>
+                        </div>
+                    </div>
+                </div>`
             });
-            document.querySelector(".list-group").innerHTML = finalHtml;
+
+            document.querySelector("#accordionMovies").innerHTML = finalHtml;
         })
         .catch(errors => console.error(errors));
 }
