@@ -18,13 +18,12 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('change','.checkbox', function () {
+    $(document).on('click','.checkbox', function () {
         if($(this).attr('checked')) {
             $(this).removeAttr('checked');
         } else {
             $(this).attr('checked','checked');
         }
-
         $(this).parent().toggleClass('completed');
 
         localStorage.setItem('listItems', $('#list-items').html());
