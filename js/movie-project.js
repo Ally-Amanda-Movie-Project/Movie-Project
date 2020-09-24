@@ -12,11 +12,35 @@ function displayMovies () {
         .then(movies => {
             console.log(movies)
             movies.forEach(movie => {
-                finalHtml += `<a href="#" class="list-group-item list-group-item-action movie d-flex 
-justify-content-between" data-id="${movie.id}" data-target="#exampleModalCenter"><span 
-class="text-left">${movie.title}</span><span class="text-center">${movie.title}</span><span class="text-right">${movie.rating}</span></a>`
+                finalHtml += `<div class="card">
+                    <div class="card-header" id="heading${movie.id}">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${movie.id}" aria-expanded="true" aria-controls="collapse${movie.id}">
+                                ${movie.title}
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapse${movie.id}" class="collapse" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">
+                        <div class="card-body">
+                            Image: 
+                            <br>
+                            Rating: ${movie.rating}
+                            <br>
+                            Genre:
+                            <br>
+                            Review:
+                            <br>
+                            <div class="btn-group" role="group" aria-label="edit-and-delete">
+                                <button type="button" data-id=${movie.id} class="btn btn-secondary editMovie">Edit Movie</button>
+                                <button type="button" class="btn btn-secondary      deleteMovie">Delete</button>     
+                           </div>
+                        </div>
+                    </div>
+                </div>`
             });
-            document.querySelector(".list-group").innerHTML = finalHtml;
+
+            document.querySelector("#accordionMovies").innerHTML = finalHtml;
         })
         .catch(errors => console.error(errors));
 }
@@ -26,19 +50,26 @@ class="text-left">${movie.title}</span><span class="text-center">${movie.title}<
 
 //Modal function
 
-    // $("#exampleModalCenter").modal("toggle", function(e){
-    //     e.preventDefault()
-    //     let movieID = $(this).data("id");
-    //     let finalHTM = ""
-    //     let displayURL = `${url}/${movieID}`
-    // fetch(displayURL)
-    //     .then(response => response.json())
-    //     .then(modal => {
-    //         // finalHTM += "<p>lasdfjalsdfjasldkfj</p>"
-    //     // document.querySelector(".modal-body").innerHTML = finalHTM;
-    //         console.log(movieID);
-    //     })
-    // });
+$(document).on("click", ".editMovie", function (e) {
+    var movieID = $(this).data("id");
+    movieID = Number(movieID);
+    e.preventDefault();
+    $("#myModal").modal("toggle");
+    console.log(movieID)
+    console.log(typeof movieID);
+    $("#myModal").on("shown.bs.modal", function (e) {
+        e.preventDefault();
+        let finalHtml = "";
+        let displayURL = `${url}/${movieID}`
+        fetch(displayURL)
+            .then(response => response.json())
+            .then(movies => {
+                finalHtml += `${movies.id}`
+
+            document.querySelector(".modal-body").innerHTML = finalHtml;
+            })
+        });
+})
 
 
 //`<button class=“edit” data-id=“${id}” ><i class=“far fa-edit”></i></button>`
