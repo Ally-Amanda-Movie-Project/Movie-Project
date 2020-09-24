@@ -21,26 +21,24 @@ class="text-left">${movie.title}</span><span class="text-center">${movie.title}<
         .catch(errors => console.error(errors));
 }
 
+
+
+
 //Modal function
 
-    $("#exampleModalCenter").modal("toggle", function(e){
-        e.preventDefault()
-        let movieID = $(this).data("id");
-        let finalHTM = ""
-        let displayURL = `${url}/${movieID}`
-    fetch(displayURL)
-        .then(response => response.json())
-        .then(modal => {
-            // finalHTM += "<p>lasdfjalsdfjasldkfj</p>"
-        // document.querySelector(".modal-body").innerHTML = finalHTM;
-            console.log(movieID);
-        })
-    });
-
-// $(".movie").click(function(){
-//     $(this).
-// });
-
+    // $("#exampleModalCenter").modal("toggle", function(e){
+    //     e.preventDefault()
+    //     let movieID = $(this).data("id");
+    //     let finalHTM = ""
+    //     let displayURL = `${url}/${movieID}`
+    // fetch(displayURL)
+    //     .then(response => response.json())
+    //     .then(modal => {
+    //         // finalHTM += "<p>lasdfjalsdfjasldkfj</p>"
+    //     // document.querySelector(".modal-body").innerHTML = finalHTM;
+    //         console.log(movieID);
+    //     })
+    // });
 
 
 //`<button class=“edit” data-id=“${id}” ><i class=“far fa-edit”></i></button>`
