@@ -15,9 +15,55 @@
         <!--Navigation Bar Starts-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Movie App</a>
+        <!--button-->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <button type="button" class="btn dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-plus-square fa-2x"></i>
+                </button>
+                    <div class="dropdown-menu">
+                        <form class="px-4 py-3">
+                            <div class="form-group">
+                                <label for="addMovieTitle">Movie Title</label>
+                                <input type="text" class="form-control" id="addMovieTitle" placeholder="Lion King">
+                            </div>
+                            <!--  movie rating dropdown-->
+                            <div class="form-group selectMenu">
+                                <select class="custom-select form-control" id="addMovieRating">
+                                    <option selected>Select a &#9734 rating</option>
+                                    <option value="1">&#9734</option>
+                                    <option value="2">&#9734&#9734</option>
+                                    <option value="3">&#9734&#9734&#9734</option>
+                                    <option value="4">&#9734&#9734&#9734&#9734</option>
+                                    <option value="5">&#9734&#9734&#9734&#9734&#9734</option>
+                                </select>
+                            </div>
+                            <!--  movie genre dropdown-->
+                            <div class="form-group selectMenu">
+                                <select class="custom-select form-control" id="addMovieGenre">
+                                    <option selected>What did you watch?</option>
+                                    <option value="Children">Children</option>
+                                    <option value="SciFi">SciFi</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="TV">TV</option>
+                                </select>
+                            </div>
+                                <button type="submit" class="btn btn-primary" id="addMovieButton">Add Movie</button>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                       Movie App
+                    </div>
+                </li>
+            </ul>
+
+
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
@@ -128,7 +174,8 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title movie-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close"  aria-label="Close">
+                                <!--removed data-dismiss="modal"-->
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -136,7 +183,7 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
                         ...
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
                         <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>

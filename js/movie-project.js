@@ -10,8 +10,9 @@ function displayMovies () {
     fetch(url)
         .then(response => response.json())
         .then(movies => {
+            let reverseMovie = movies.reverse()
             console.log(movies)
-            movies.forEach(movie => {
+            reverseMovie.forEach(movie => {
                 finalHtml += `<div class="card">
                     <div class="card-header" id="heading${movie.id}">
                         <h2 class="mb-0">
@@ -51,23 +52,27 @@ function displayMovies () {
 //Modal function
 
 $(document).on("click", ".editMovie", function (e) {
+
     var movieID = $(this).data("id");
-    movieID = Number(movieID);
+    // movieID = (movieID);
     e.preventDefault();
     $("#myModal").modal("toggle");
     console.log(movieID)
     console.log(typeof movieID);
     $("#myModal").on("shown.bs.modal", function (e) {
-        e.preventDefault();
+        // e.preventDefault();
+        $(".modal-body").empty()
         let finalHtml = "";
         let displayURL = `${url}/${movieID}`
         fetch(displayURL)
             .then(response => response.json())
             .then(movies => {
+            if (movies.id === movieID) {
                 finalHtml += `${movies.id}`
 
-            document.querySelector(".modal-body").innerHTML = finalHtml;
-            })
+
+                document.querySelector(".modal-body").innerHTML = finalHtml;
+            }})
         });
 })
 
@@ -89,12 +94,14 @@ $(document).on("click", ".editMovie", function (e) {
 /*Functions*/
 //Adds a movie to server
 function addMovie () {
-    let userMovieTitle = document.getElementById("movie-title").value
-    let userMovieRating = document.getElementById("rating").value
+    let userMovieTitle = document.getElementById("addMovieTitle").value
+    let userMovieRating = document.getElementById("addMovieRating").value
+    let userMovieGenre = document.getElementById("addMovieGenre").value
 
     const movies = {
         "title": userMovieTitle,
         "rating": userMovieRating,
+        "genre": userMovieGenre
     };
 
     const options = {
@@ -150,3 +157,8 @@ function deleteMovie () {
         .catch(errors => console.log(errors));
  }
 
+
+// select menu stay open
+$('.selectMenu').on('click', function(e) {
+    e.stopPropagation();
+});
