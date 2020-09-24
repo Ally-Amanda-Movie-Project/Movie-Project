@@ -65,6 +65,7 @@ $(document).on("click", ".editMovie", function (e) {
             .then(response => response.json())
             .then(movies => {
                 finalHtml += `${movies.id}`
+
             document.querySelector(".modal-body").innerHTML = finalHtml;
             })
         });
