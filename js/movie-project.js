@@ -30,7 +30,7 @@ function displayMovies () {
                             <br>
                             Genre: ${movie.genre}
                             <br>
-                            Review: $
+                            Review: ${movie.review}
                             <br>
                             <div class="btn-group" role="group" aria-label="edit-and-delete">
                                 <button type="button" data-id=${movie.id} class="btn btn-secondary editMovie">Edit Movie</button>
@@ -52,38 +52,45 @@ function displayMovies () {
 
 
 //Modal function
-
 $(document).on("click", ".editMovie", function (e) {
-
-    var movieID = $(this).data("id");
-    // movieID = (movieID);
     e.preventDefault();
-    $("#myModal").modal("toggle");
+    let movieID = $(this).data("id");
+    let displayURL = `${url}/${movieID}`
     console.log(movieID)
-    console.log(typeof movieID);
-    $("#myModal").on("shown.bs.modal", function (e) {
-        // e.preventDefault();
-        $(".modal-body").empty()
-        let finalHtml = "";
-        let displayURL = `${url}/${movieID}`
-        fetch(displayURL)
-            .then(response => response.json())
-            .then(movies => {
-            if (movies.id === movieID) {
-                finalHtml += `${movies.id}`
-                document.querySelector(".modal-body").innerHTML = finalHtml;
-            }})
-        });
+    fetch(displayURL)
+        .then(response => response.json())
+        .then(movie => {
+            $("#editMovieTitle").val(movie.title);
+            $("#editMovieRating").val(movie.rating);
+            $("#editMovieGenre").val(movie.genre);
+            $("#editMovieReview").val(movie.review);
+            $("#saveChanges").attr("data-id", movie.id)
+        })
+        .catch(errors => console.log(errors));
+    $("#myModal").modal("toggle")
 })
 
+$(document).on("click", "#saveChanges", function () {
+    let movieID = $(this).data("id");
+    editMovie(movieID);
+})
 
+$(document).on("click", ".close", function () {
+    $("#myModal").modal("hide");
+})
 
+$(document).on("click", ".deleteMovie", function (e) {
+    let movieID = $(this).data("id");
+    deleteMovie(movieID)
+})
 
 //Button to add a movie
 $("#addMovieButton").click(function (e) {
     e.preventDefault();
     addMovie()
 })
+
+
 
 /*Functions*/
 //Adds a movie to server
@@ -117,10 +124,18 @@ function addMovie () {
 }
 
 // Edit an existing movie
-function editMovie () {
+function editMovie (id) {
+    let displayURL = `${url}/${id}`
+    let editMovieTitle = document.getElementById("editMovieTitle").value
+    let editMovieRating = document.getElementById("editMovieRating").value
+    let editMovieGenre = document.getElementById("editMovieGenre").value
+    let editMovieReview = document.getElementById("editMovieReview").value
+
     const movies = {
-        "title": "The Little Mermaid",
-        "rating": 4,
+        "title": editMovieTitle,
+        "rating": editMovieRating,
+        "genre": editMovieGenre,
+        "review": editMovieReview
     }
 
     const options = {
@@ -131,25 +146,33 @@ function editMovie () {
         "body": JSON.stringify(movies)
     }
 
-    fetch(url, options)
-        .then(response => console.log(response))
+    fetch(displayURL, options)
+        .then(response => response.json())
+        .then(movie =>
+            displayMovies())
         .catch(errors => console.log(errors));
 }
 
 //Delete an existing movie
-function deleteMovie () {
+function deleteMovie (id) {
+    let deleteMovieAlert = confirm("Are you sure you want to delete this movie?");
+    if (deleteMovieAlert === true) {
+        let displayURL = `${url}/${id}`
 
-    const options = {
-        "method": "DELETE",
-        "headers": {
-            'Content-Type' : 'application/json'
+        const options = {
+            "method": "DELETE",
+            "headers": {
+                'Content-Type': 'application/json'
+            }
         }
-    }
 
-    fetch(url, options)
-        .then(response => console.log(response))
-        .catch(errors => console.log(errors));
- }
+        fetch(displayURL, options)
+            .then(response => response.json)
+            .then(movie =>
+                displayMovies())
+            .catch(errors => console.log(errors));
+    }
+}
 
 
 // select menu stay open

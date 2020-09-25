@@ -191,7 +191,39 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <form class="px-4 py-3">
+                            <div class="form-group">
+                                <label for="addMovieTitle">Movie Title</label>
+                                <input type="text" class="form-control" id="editMovieTitle" value="Movie">
+                            </div>
+                            <!--  movie rating dropdown-->
+                            <div class="form-group selectMenu">
+                                <select class="custom-select form-control" id="editMovieRating">
+                                    <option selected>Select a &#9734 rating</option>
+                                    <option value="1">&#9734</option>
+                                    <option value="2">&#9734&#9734</option>
+                                    <option value="3">&#9734&#9734&#9734</option>
+                                    <option value="4">&#9734&#9734&#9734&#9734</option>
+                                    <option value="5">&#9734&#9734&#9734&#9734&#9734</option>
+                                </select>
+                            </div>
+                            <!--  movie genre dropdown-->
+                            <div class="form-group selectMenu">
+                                <select class="custom-select form-control" id="editMovieGenre">
+                                    <option selected>What did you watch?</option>
+                                    <option value="Children">Children</option>
+                                    <option value="SciFi">SciFi</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="TV">TV</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editMovieReview">Write a review</label>
+                                <textarea class="form-control" id="editMovieReview" rows="3"></textarea>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
 <!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
