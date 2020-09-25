@@ -10,8 +10,8 @@ function displayMovies () {
     fetch(url)
         .then(response => response.json())
         .then(movies => {
+            $("#accordionMovies").empty();
             let reverseMovie = movies.reverse()
-            console.log(movies)
             reverseMovie.forEach(movie => {
                 finalHtml += `<div class="card">`
                 finalHtml += `<div class="card-header" id="heading${movie.id}">`
@@ -68,7 +68,7 @@ $(document).on("click", ".editMovie", function (e) {
 
 $("#saveChanges").click(function () {
     let movieID = $(this).data("id");
-    console.log(movieID);
+    editMovie(movieID);
 })
 
 $(document).on("click", ".close", function () {
@@ -113,6 +113,7 @@ function addMovie () {
     fetch(url, options)
         .then(response => response.json())
         .then(movie => {
+            $("#loading").css("display", "block");
             displayMovies();
         })
         .catch(errors => console.log(errors));
@@ -136,7 +137,7 @@ function editMovie (id) {
     }
 
     const options = {
-        "method": "PATCH",
+        "method": "PUT",
         "headers": {
             'Content-Type' : 'application/json'
         },
@@ -145,8 +146,10 @@ function editMovie (id) {
 
     fetch(displayURL, options)
         .then(response => response.json())
-        .then(movie =>
-            displayMovies())
+        .then(movie => {
+            $("#loading").css("display", "block")
+        displayMovies()
+        })
         .catch(errors => console.log(errors));
 }
 
@@ -165,8 +168,10 @@ function deleteMovie (id) {
 
         fetch(displayURL, options)
             .then(response => response.json)
-            .then(movie =>
-                displayMovies())
+            .then(movie => {
+                $("#loading").css("display", "block");
+                displayMovies()
+            })
             .catch(errors => console.log(errors));
     }
 }
