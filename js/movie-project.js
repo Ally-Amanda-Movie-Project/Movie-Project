@@ -1,7 +1,7 @@
 const url =
     "https://ally-amanda-movie-app.glitch.me/movies"
 
-
+//Displays initial list of movies
 displayMovies();
 
 //Displays the Movie List
@@ -30,18 +30,20 @@ function displayMovies () {
                             <br>
                             Genre: ${movie.genre}
                             <br>
-                            Review:
+                            Review: $
                             <br>
                             <div class="btn-group" role="group" aria-label="edit-and-delete">
                                 <button type="button" data-id=${movie.id} class="btn btn-secondary editMovie">Edit Movie</button>
-                                <button type="button" class="btn btn-secondary      deleteMovie">Delete</button>     
+                               <button type="button" class="btn btn-secondary deleteMovie" data-id=${movie.id}>Delete</button>     
                            </div>
                         </div>
                     </div>
                 </div>`
             });
-
-            document.querySelector("#accordionMovies").innerHTML = finalHtml;
+            setTimeout(function () {
+                $("#loading").css("display", "none");
+                document.querySelector("#accordionMovies").innerHTML = finalHtml;
+            }, 3000);
         })
         .catch(errors => console.error(errors));
 }
