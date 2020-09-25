@@ -10,35 +10,33 @@ function displayMovies () {
     fetch(url)
         .then(response => response.json())
         .then(movies => {
+            $("#accordionMovies").empty();
             let reverseMovie = movies.reverse()
-            console.log(movies)
             reverseMovie.forEach(movie => {
-                finalHtml += `<div class="card">
-                    <div class="card-header" id="heading${movie.id}">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${movie.id}" aria-expanded="true" aria-controls="collapse${movie.id}">
-                                ${movie.title}
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapse${movie.id}" class="collapse" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">
-                        <div class="card-body">
-                            Image: 
-                            <br>
-                            Rating: ${movie.rating}
-                            <br>
-                            Genre: ${movie.genre}
-                            <br>
-                            Review: $
-                            <br>
-                            <div class="btn-group" role="group" aria-label="edit-and-delete">
-                                <button type="button" data-id=${movie.id} class="btn btn-secondary editMovie">Edit Movie</button>
-                               <button type="button" class="btn btn-secondary deleteMovie" data-id=${movie.id}>Delete</button>     
-                           </div>
-                        </div>
-                    </div>
-                </div>`
+                finalHtml += `<div class="card">`
+                finalHtml += `<div class="card-header" id="heading${movie.id}">`
+                finalHtml += `<h2 class="mb-0">`
+                finalHtml += `<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${movie.id}" aria-expanded="true" aria-controls="collapse${movie.id}">`
+                finalHtml += `${movie.title}`
+                finalHtml += `</button>`
+                finalHtml += `</h2>`
+                finalHtml += `</div>`
+                finalHtml += `<div id="collapse${movie.id}" class="collapse" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">`
+                finalHtml += `<div class="card-body">`
+                finalHtml += `<p>Rating: ${movie.rating}</p>`
+                finalHtml += `<p>Genre: ${movie.genre}</p>`
+                if(typeof movie.review === "undefined") {
+                    finalHtml += `<p>Tell us about ${movie.title}!`
+                } else {
+                    finalHtml += `<p>Review: ${movie.review}</p>`
+                }
+                finalHtml += `<div class="btn-group" role="group" aria-label="edit-and-delete">`
+                finalHtml += `<button type="button" data-id=${movie.id} class="btn btn-secondary editMovie">Edit</button>`
+                finalHtml += `<button type="button" class="btn btn-secondary deleteMovie" data-id=${movie.id}>Delete</button>`
+                finalHtml += `</div>`
+                finalHtml += `</div>`
+                finalHtml += `</div>`
+                finalHtml += `</div>`
             });
             setTimeout(function () {
                 $("#loading").css("display", "none");
@@ -49,41 +47,46 @@ function displayMovies () {
 }
 
 
-
-
 //Modal function
-
 $(document).on("click", ".editMovie", function (e) {
-
-    var movieID = $(this).data("id");
-    // movieID = (movieID);
     e.preventDefault();
-    $("#myModal").modal("toggle");
+    let movieID = $(this).data("id");
+    let displayURL = `${url}/${movieID}`
     console.log(movieID)
-    console.log(typeof movieID);
-    $("#myModal").on("shown.bs.modal", function (e) {
-        // e.preventDefault();
-        $(".modal-body").empty()
-        let finalHtml = "";
-        let displayURL = `${url}/${movieID}`
-        fetch(displayURL)
-            .then(response => response.json())
-            .then(movies => {
-            if (movies.id === movieID) {
-                finalHtml += `${movies.id}`
-                document.querySelector(".modal-body").innerHTML = finalHtml;
-            }})
-        });
+    fetch(displayURL)
+        .then(response => response.json())
+        .then(movie => {
+            $("#editMovieTitle").val(movie.title);
+            $("#editMovieRating").val(movie.rating);
+            $("#editMovieGenre").val(movie.genre);
+            $("#editMovieReview").val(movie.review);
+            $("#saveChanges").attr("data-id", movieID);
+        })
+        .catch(errors => console.log(errors));
+    $("#myModal").modal("toggle")
 })
 
+$("#saveChanges").click(function () {
+    let movieID = $(this).data("id");
+    editMovie(movieID);
+})
 
+$(document).on("click", ".close", function () {
+    $("#myModal").modal("hide");
+})
 
+$(document).on("click", ".deleteMovie", function (e) {
+    let movieID = $(this).data("id");
+    deleteMovie(movieID)
+})
 
 //Button to add a movie
 $("#addMovieButton").click(function (e) {
     e.preventDefault();
     addMovie()
 })
+
+
 
 /*Functions*/
 //Adds a movie to server
@@ -110,6 +113,7 @@ function addMovie () {
     fetch(url, options)
         .then(response => response.json())
         .then(movie => {
+            $("#loading").css("display", "block");
             displayMovies();
         })
         .catch(errors => console.log(errors));
@@ -117,39 +121,60 @@ function addMovie () {
 }
 
 // Edit an existing movie
-function editMovie () {
+function editMovie (id) {
+    let displayURL = `${url}/${id}`
+    let editMovieTitle = document.getElementById("editMovieTitle").value
+    let editMovieRating = document.getElementById("editMovieRating").value
+    let editMovieGenre = document.getElementById("editMovieGenre").value
+    let editMovieReview = document.getElementById("editMovieReview").value
+
+
     const movies = {
-        "title": "The Little Mermaid",
-        "rating": 4,
+        "title": editMovieTitle,
+        "rating": editMovieRating,
+        "genre": editMovieGenre,
+        "review": editMovieReview
     }
 
     const options = {
-        "method": "PATCH",
+        "method": "PUT",
         "headers": {
             'Content-Type' : 'application/json'
         },
         "body": JSON.stringify(movies)
     }
 
-    fetch(url, options)
-        .then(response => console.log(response))
+    fetch(displayURL, options)
+        .then(response => response.json())
+        .then(movie => {
+            $("#loading").css("display", "block")
+        displayMovies()
+        })
         .catch(errors => console.log(errors));
 }
 
 //Delete an existing movie
-function deleteMovie () {
+function deleteMovie (id) {
+    let deleteMovieAlert = confirm("Are you sure you want to delete this movie?");
+    if (deleteMovieAlert === true) {
+        let displayURL = `${url}/${id}`
 
-    const options = {
-        "method": "DELETE",
-        "headers": {
-            'Content-Type' : 'application/json'
+        const options = {
+            "method": "DELETE",
+            "headers": {
+                'Content-Type': 'application/json'
+            }
         }
-    }
 
-    fetch(url, options)
-        .then(response => console.log(response))
-        .catch(errors => console.log(errors));
- }
+        fetch(displayURL, options)
+            .then(response => response.json)
+            .then(movie => {
+                $("#loading").css("display", "block");
+                displayMovies()
+            })
+            .catch(errors => console.log(errors));
+    }
+}
 
 
 // select menu stay open
