@@ -28,7 +28,7 @@ function displayMovies () {
                             <br>
                             Rating: ${movie.rating}
                             <br>
-                            Genre:
+                            Genre: ${movie.genre}
                             <br>
                             Review:
                             <br>
@@ -69,27 +69,19 @@ $(document).on("click", ".editMovie", function (e) {
             .then(movies => {
             if (movies.id === movieID) {
                 finalHtml += `${movies.id}`
-
-
                 document.querySelector(".modal-body").innerHTML = finalHtml;
             }})
         });
 })
 
 
-//`<button class=“edit” data-id=“${id}” ><i class=“far fa-edit”></i></button>`
 
-//$(document).on("click", ".edit", function(e){
-//     e.preventDefault();
-//     console.log("bacon");
-//     let editID = $(this).data("id");
-//     console.log(editID);
 
-// document.getElementById("add-movie").addEventListener("click", function (e) {
-//     e.preventDefault();
-//     addMovie();
-// })
-
+//Button to add a movie
+$("#addMovieButton").click(function (e) {
+    e.preventDefault();
+    addMovie()
+})
 
 /*Functions*/
 //Adds a movie to server
