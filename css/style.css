@@ -1,10 +1,14 @@
 * {
     box-sizing: border-box;
 }
-
-body{
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: darkslategray;
     background-image: url("../img/positive.png");
 }
+/*--------------navbar------------------*/
+
 .navbar{
     background-color: #b0dcd6!important;
     border: black 4px solid;
@@ -14,6 +18,8 @@ body{
 .nav-link:hover{
     text-decoration: underline;
 }
+/*--------------dropdown menu------------------*/
+
 .dropdown-menu{
     border: black 4px solid;
     background-image: url("../img/positive.png");
@@ -75,16 +81,16 @@ body{
     font-family: 'Roboto Mono', monospace;
 }
 
-
-body {
-    width: 100%;
-    height: 100vh;
-    background-color: darkslategray;
-}
-
 #accordionMovies {
     display: none;
 }
+/*--------------carousel------------------*/
+.carousel-caption{
+    background-color: #e8b0ae;
+    opacity:.75;
+    font-family: 'Roboto Mono', monospace;
+}
+
 
 /*--------------to do form------------------*/
 .form-check {
@@ -153,3 +159,31 @@ body {
     }
 }
 
+/*-----------------footer-----------*/
+footer{
+    bottom: 0;
+    width: 100%;
+    height: 3em;
+    border: black 4px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: fixed;
+    background-color: #b0dcd6;
+    margin: 0;
+
+}
+#social-links > ul > li {
+    list-style: none;
+}
+#social-links > ul > li > a{
+    color: #e8b0ae;
+    font-size: 2em;
+    padding: 1em;
+    height: 2em;
+    line-height: 2em ;
+}
+#social-links > ul > li > a:hover{
+    color: #f6ba43;
+
+}
