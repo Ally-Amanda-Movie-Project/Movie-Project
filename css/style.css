@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 body{
     background-image: url("../img/positive.png");
 }
@@ -29,4 +30,71 @@ body{
 }
 
 font-family: 'Press Start 2P', cursive;
+
+
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: darkslategray;
+}
+
+#accordionMovies {
+    display: none;
+}
+
+#loading {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+
+#loading path:nth-child(1) {
+    stroke-dasharray: 365px;
+    stroke-dashoffset: 365px;
+    animation: line-animation 2s ease forwards infinite;
+}
+
+#loading path:nth-child(2) {
+    stroke-dasharray: 586px;
+    stroke-dashoffset: 586px;
+    animation: line-animation 2s ease forwards infinite;
+}
+
+#loading path:nth-child(3) {
+    stroke-dasharray: 550px;
+    stroke-dashoffset: 550px;
+    animation: line-animation 2s ease forwards infinite;
+}
+
+#loading path:nth-child(4) {
+    stroke-dasharray: 602px;
+    stroke-dashoffset: 602px;
+    animation: line-animation 2s ease forwards infinite;
+}
+
+#loading path:nth-child(5) {
+    stroke-dasharray: 257px;
+    stroke-dashoffset: 257px;
+    animation: line-animation 2s ease forwards infinite;
+
+}
+
+#loading path:nth-child(6) {
+    stroke-dasharray: 673px;
+    stroke-dashoffset: 673px;
+    animation: line-animation 2s ease forwards infinite;
+}
+
+#loading path:nth-child(7) {
+    stroke-dasharray: 631px;
+    stroke-dashoffset: 631px;
+    animation: line-animation 2s ease forwards infinite;
+}
+
+@keyframes line-animation {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
 
