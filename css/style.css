@@ -8,6 +8,11 @@ body{
 .navbar{
     background-color: #b0dcd6!important;
     border: black 4px solid;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.25em;
+}
+.nav-link:hover{
+    text-decoration: underline;
 }
 .dropdown-menu{
     border: black 4px solid;
@@ -19,13 +24,21 @@ body{
     font-family: 'Press Start 2P', cursive;
     color: black;
 }
-
+.dropdownMoveTitle{
+    background-color: #e8b0ae;
+}
+#longLogoDrop{
+    background-color: #e8b0ae;
+    display: flex;
+    justify-content: center;
+}
 .selectMenu, .form-group{
     border: black 4px solid;
 }
 .movieCards{
     border: black 4px solid;
     background-color: white;
+
 }
 .movieOpen{
     border: black 4px solid;
@@ -61,7 +74,8 @@ body{
     text-decoration: none;
 }
 .movieInfo{
-    font-family: 'Roboto Mono', monospace;}
+    font-family: 'Roboto Mono', monospace;
+}
 
 
 body {
@@ -73,7 +87,7 @@ body {
 #accordionMovies {
     display: none;
 }
-
+/*loading animation*/
 #loading {
     position: absolute;
     top: 30%;
