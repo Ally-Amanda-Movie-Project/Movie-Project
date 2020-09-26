@@ -1,3 +1,15 @@
 * {
     box-sizing: border-box;
 }
+body{
+    background-image: url("../img/810.jpg");
+    /*width: 1366px;*/
+    /*background-position: center center;*/
+    /*background-repeat: repeat;*/
+    /*background-attachment: fixed;*/
+    /*background-repeat-size: cover;*/
+    background-color: #eee1d8;
+    margin: 0;
+}
+
+
