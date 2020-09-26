@@ -1,7 +1,13 @@
 const url =
     "https://ally-amanda-movie-app.glitch.me/movies"
 
+
+//3D Carousel
+// $('.carousel-3d-controls').mdbCarousel3d();
+
+
 //Displays initial list of movies
+
 displayMovies();
 
 //Displays the Movie List
