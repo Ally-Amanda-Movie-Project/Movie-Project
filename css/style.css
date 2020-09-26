@@ -56,6 +56,10 @@ body{
     color: #9979b7;
     text-decoration: none;
 }
+.movieList:active{
+    border: none;
+    text-decoration: none;
+}
 .movieInfo{
     font-family: 'Roboto Mono', monospace;}
 

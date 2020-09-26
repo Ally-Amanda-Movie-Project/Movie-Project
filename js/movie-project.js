@@ -29,12 +29,17 @@ function displayMovies () {
                 finalHtml += `</div>`
                 finalHtml += `<div id="collapse${movie.id}" class="collapse" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">`
                 finalHtml += `<div class="card-body movieInfo">`
-                finalHtml += `<p>Rating: ${movie.rating}</p>`
+                finalHtml += `<p>Rating: ${movie.rating} <i class="far fa-star"></i></p>`
                 finalHtml += `<p>Genre: ${movie.genre}</p>`
                 if(typeof movie.review === "undefined") {
                     finalHtml += `<p>Tell us about ${movie.title}!`
                 } else {
                     finalHtml += `<p>Review: ${movie.review}</p>`
+                }
+                if(typeof movie.kindOfLike === "undefined") {
+                    finalHtml += `<p>If you like ${movie.title}, you'll really like...`
+                } else {
+                    finalHtml += `<p>Kind of Like: ${movie.kindOfLike}</p>`
                 }
                 finalHtml += `<div class="btn-group" role="group" aria-label="edit-and-delete">`
                 finalHtml += `<button type="button" data-id=${movie.id} class="btn btn-secondary editMovie buttonDesign">Edit</button>`
@@ -66,6 +71,7 @@ $(document).on("click", ".editMovie", function (e) {
             $("#editMovieRating").val(movie.rating);
             $("#editMovieGenre").val(movie.genre);
             $("#editMovieReview").val(movie.review);
+            $("#editMovieKOL").val(movie.kindOfLike);
         })
         .catch(errors => console.log(errors));
     $("#myModal").modal("toggle")
@@ -135,13 +141,14 @@ function editMovie (id) {
     let editMovieRating = document.getElementById("editMovieRating").value
     let editMovieGenre = document.getElementById("editMovieGenre").value
     let editMovieReview = document.getElementById("editMovieReview").value
-
+    let editMovieKOL = document.getElementById("editMovieKOL").value
 
     const movies = {
         "title": editMovieTitle,
         "rating": editMovieRating,
         "genre": editMovieGenre,
-        "review": editMovieReview
+        "review": editMovieReview,
+        "kindOfLike": editMovieKOL
     }
 
     const options = {
