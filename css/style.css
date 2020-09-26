@@ -11,8 +11,15 @@ body{
 }
 .dropdown-menu{
     border: black 4px solid;
-    background-color: #e8b0ae;
+    background-image: url("../img/positive.png");
 }
+.buttonDesign{
+    background-color: #e8b0ae;
+    border: black 4px solid;
+    font-family: 'Press Start 2P', cursive;
+    color: black;
+}
+
 .selectMenu, .form-group{
     border: black 4px solid;
 }
@@ -28,9 +35,29 @@ body{
     border: black 4px solid;
 
 }
-
-font-family: 'Press Start 2P', cursive;
-
+.card-header, .card-footer {
+    border: black 4px solid;
+}
+.card-body{
+    border: black 4px solid;
+    background-color: #f6ba43;
+}
+.app-title{
+    background-color: #e8b0ae;
+}
+.movieList{
+    font-family: 'Press Start 2P', cursive;
+    color: black;
+    font-size: 16px;
+    /*display: flex;*/
+    /*justify-content: center;*/
+}
+.movieList:hover{
+    color: #9979b7;
+    text-decoration: none;
+}
+.movieInfo{
+    font-family: 'Roboto Mono', monospace;}
 
 
 body {

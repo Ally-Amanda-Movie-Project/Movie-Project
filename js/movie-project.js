@@ -20,15 +20,15 @@ function displayMovies () {
             let reverseMovie = movies.reverse()
             reverseMovie.forEach(movie => {
                 finalHtml += `<div class="card">`
-                finalHtml += `<div class="card-header" id="heading${movie.id}">`
+                finalHtml += `<div class="card-header " id="heading${movie.id}">`
                 finalHtml += `<h2 class="mb-0">`
-                finalHtml += `<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${movie.id}" aria-expanded="true" aria-controls="collapse${movie.id}">`
+                finalHtml += `<button class="btn btn-link btn-block text-left collapsed movieList" type="button" data-toggle="collapse" data-target="#collapse${movie.id}" aria-expanded="true" aria-controls="collapse${movie.id}">`
                 finalHtml += `${movie.title}`
                 finalHtml += `</button>`
                 finalHtml += `</h2>`
                 finalHtml += `</div>`
                 finalHtml += `<div id="collapse${movie.id}" class="collapse" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">`
-                finalHtml += `<div class="card-body">`
+                finalHtml += `<div class="card-body movieInfo">`
                 finalHtml += `<p>Rating: ${movie.rating}</p>`
                 finalHtml += `<p>Genre: ${movie.genre}</p>`
                 if(typeof movie.review === "undefined") {
@@ -37,8 +37,8 @@ function displayMovies () {
                     finalHtml += `<p>Review: ${movie.review}</p>`
                 }
                 finalHtml += `<div class="btn-group" role="group" aria-label="edit-and-delete">`
-                finalHtml += `<button type="button" data-id=${movie.id} class="btn btn-secondary editMovie">Edit</button>`
-                finalHtml += `<button type="button" class="btn btn-secondary deleteMovie" data-id=${movie.id}>Delete</button>`
+                finalHtml += `<button type="button" data-id=${movie.id} class="btn btn-secondary editMovie buttonDesign">Edit</button>`
+                finalHtml += `<button type="button" class="btn btn-secondary deleteMovie buttonDesign" data-id=${movie.id}>Delete</button>`
                 finalHtml += `</div>`
                 finalHtml += `</div>`
                 finalHtml += `</div>`
