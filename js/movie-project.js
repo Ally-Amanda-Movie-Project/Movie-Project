@@ -60,15 +60,17 @@ $(document).on("click", ".editMovie", function (e) {
             $("#editMovieRating").val(movie.rating);
             $("#editMovieGenre").val(movie.genre);
             $("#editMovieReview").val(movie.review);
-            $("#saveChanges").attr("data-id", movieID);
         })
         .catch(errors => console.log(errors));
     $("#myModal").modal("toggle")
+    $("#saveChanges").attr("data-id", movieID);
 })
 
 $("#saveChanges").click(function () {
     let movieID = $(this).data("id");
+    console.log(movieID);
     editMovie(movieID);
+    $("#myModal").modal('hide');
 })
 
 $(document).on("click", ".close", function () {
