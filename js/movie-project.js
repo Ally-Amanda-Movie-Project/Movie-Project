@@ -1,6 +1,8 @@
 const url =
     "https://ally-amanda-movie-app.glitch.me/movies"
 
+//3D Carousel
+// $('.carousel-3d-controls').mdbCarousel3d();
 
 displayMovies();
 
@@ -14,7 +16,7 @@ function displayMovies () {
             console.log(movies)
             reverseMovie.forEach(movie => {
                 finalHtml += `<div class="card">
-                    <div class="card-header" id="heading${movie.id}">
+                    <div class="card-header movieCards" id="heading${movie.id}">
                         <h2 class="mb-0">
                             <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${movie.id}" aria-expanded="true" aria-controls="collapse${movie.id}">
                                 ${movie.title}
@@ -22,7 +24,7 @@ function displayMovies () {
                         </h2>
                     </div>
 
-                    <div id="collapse${movie.id}" class="collapse" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">
+                    <div id="collapse${movie.id}" class="collapse movieOpen" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">
                         <div class="card-body">
                             Image: 
                             <br>

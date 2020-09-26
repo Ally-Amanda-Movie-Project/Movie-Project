@@ -2,14 +2,31 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url("../img/810.jpg");
-    /*width: 1366px;*/
-    /*background-position: center center;*/
-    /*background-repeat: repeat;*/
-    /*background-attachment: fixed;*/
-    /*background-repeat-size: cover;*/
-    background-color: #eee1d8;
-    margin: 0;
+    background-image: url("../img/positive.png");
 }
+.navbar{
+    background-color: #b0dcd6!important;
+    border: black 4px solid;
+}
+.dropdown-menu{
+    border: black 4px solid;
+    background-color: #e8b0ae;
+}
+.selectMenu, .form-group{
+    border: black 4px solid;
+}
+.movieCards{
+    border: black 4px solid;
+    background-color: white;
+}
+.movieOpen{
+    border: black 4px solid;
+
+}
+.movieModal{
+    border: black 4px solid;
+
+}
+
 font-family: 'Press Start 2P', cursive;
 

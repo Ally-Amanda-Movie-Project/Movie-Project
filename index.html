@@ -15,7 +15,9 @@
     <div class="container-fluid">
         <!--Navigation Bar Starts-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Movie App</a>
+            <a class="navbar-brand" href="#">
+                <img src="img/Have.png" width="80" height="90" alt="Have You Seen It logo" loading="lazy">
+            </a>
         <!--button-->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -54,7 +56,7 @@
                                 <button type="submit" class="btn btn-primary" id="addMovieButton">Add Movie</button>
                         </form>
                         <div class="dropdown-divider"></div>
-                       Movie App
+                       Have you seen
                     </div>
                 </li>
             </ul>
@@ -77,9 +79,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Hello, <span id="username">World!</span></a>
                     </li>
+                    <!--user icon-->
                     <li class="nav-item">
                         <a class="navbar-brand" href="#">
-                            <img src="/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" loading="lazy">
+                            <img src="img/user-icon.png" width="60" height="60" alt="gradiant user image icon" loading="lazy">
                         </a>
                     </li>
                 </ul>
@@ -143,6 +146,28 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
                 </div>
                 <!-- Carousel Ends-->
 
+                <!--3D Carousel-->
+
+<!--                <div class="container">-->
+<!--                    <div class="carousel-3d carousel-3d-controls">-->
+<!--                        <div class="carousel-3d-inner">-->
+<!--                            <div class="carousel-3d-item"><img src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg" alt="Slide"></div>-->
+<!--                            <div class="carousel-3d-item"><img src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg" alt="Slide"></div>-->
+<!--                            <div class="carousel-3d-item"><img src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg" alt="Slide"></div>-->
+<!--                            <div class="carousel-3d-item"><img src="https://mdbootstrap.com/img/Photos/Slides/img%20(48).jpg" alt="Slide"></div>-->
+<!--                            <div class="carousel-3d-item"><img src="https://mdbootstrap.com/img/Photos/Slides/img%20(49).jpg" alt="Slide"></div>-->
+<!--                            <div class="carousel-3d-item"><img src="https://mdbootstrap.com/img/Photos/Slides/img%20(50).jpg" alt="Slide"></div>-->
+<!--                            <div class="carousel-3d-item"><img src="https://mdbootstrap.com/img/Photos/Slides/img%20(51).jpg" alt="Slide"></div>-->
+<!--                            <div class="carousel-3d-item"><img src="https://mdbootstrap.com/img/Photos/Slides/img%20(52).jpg" alt="Slide"></div>-->
+<!--                            <div class="carousel-3d-item"><img src="https://mdbootstrap.com/img/Photos/Slides/img%20(53).jpg" alt="Slide"></div>-->
+<!--                        </div>-->
+<!--                        <div class="carousel-3d-controls">-->
+<!--                            <a class="prev-btn waves-effect waves-light"><i class="fas fa-chevron-left"></i></a>-->
+<!--                            <a class="next-btn waves-effect waves-light"><i class="fas fa-chevron-right"></i></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
                 <!-- Want to Watch List Starts-->
                 <div class="card">
                     <h1 class="app-title card-header">Watch List</h1>
@@ -171,8 +196,8 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
 
         <!--Modal Starts-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
+            <div class="modal-dialog modal-dialog-centered " role="document">
+                <div class="modal-content movieModal">
                     <div class="modal-header">
                         <h5 class="modal-title movie-title" id="exampleModalLongTitle">Modal title</h5>
                         <button type="button" class="close"  aria-label="Close">
