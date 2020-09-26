@@ -55,9 +55,7 @@ body{
     border: black 4px solid;
     background-color: #f6ba43;
 }
-.app-title{
-    background-color: #e8b0ae;
-}
+
 .movieList{
     font-family: 'Press Start 2P', cursive;
     color: black;
@@ -66,7 +64,7 @@ body{
     /*justify-content: center;*/
 }
 .movieList:hover{
-    color: #9979b7;
+    color: #b0dcd6;
     text-decoration: none;
 }
 .movieList:active{
@@ -87,7 +85,19 @@ body {
 #accordionMovies {
     display: none;
 }
-/*loading animation*/
+
+/*--------------to do form------------------*/
+.form-check {
+    background-color: #f6ba43;
+    font-family: 'Roboto Mono', monospace;
+}
+.add-items{
+    border: none;
+}
+.app-title{
+     background-color: #b0dcd6;
+ }
+/*-----------------loading animation-----------*/
 #loading {
     position: absolute;
     top: 30%;

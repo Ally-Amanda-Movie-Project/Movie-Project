@@ -31,6 +31,11 @@ function displayMovies () {
                 finalHtml += `<div class="card-body movieInfo">`
                 finalHtml += `<p>Rating: ${movie.rating} <i class="far fa-star"></i></p>`
                 finalHtml += `<p>Genre: ${movie.genre}</p>`
+                if(typeof movie.watch === "undefined") {
+                    finalHtml += `<p>Where did you watch ${movie.title}?`
+                } else {
+                    finalHtml += `<p>Whatched on: ${movie.watch}</p>`
+                }
                 if(typeof movie.review === "undefined") {
                     finalHtml += `<p>Tell us about ${movie.title}!`
                 } else {
@@ -70,6 +75,7 @@ $(document).on("click", ".editMovie", function (e) {
             $("#editMovieTitle").val(movie.title);
             $("#editMovieRating").val(movie.rating);
             $("#editMovieGenre").val(movie.genre);
+            $("#editMovieWatch").val(movie.watch);
             $("#editMovieReview").val(movie.review);
             $("#editMovieKOL").val(movie.kindOfLike);
         })
@@ -140,6 +146,7 @@ function editMovie (id) {
     let editMovieTitle = document.getElementById("editMovieTitle").value
     let editMovieRating = document.getElementById("editMovieRating").value
     let editMovieGenre = document.getElementById("editMovieGenre").value
+    let editMovieWatch = document.getElementById("editMovieWatch").value
     let editMovieReview = document.getElementById("editMovieReview").value
     let editMovieKOL = document.getElementById("editMovieKOL").value
 
@@ -147,6 +154,7 @@ function editMovie (id) {
         "title": editMovieTitle,
         "rating": editMovieRating,
         "genre": editMovieGenre,
+        "watch": editMovieWatch,
         "review": editMovieReview,
         "kindOfLike": editMovieKOL
     }
