@@ -5,13 +5,16 @@ const url =
 //3D Carousel
 // $('.carousel-3d-controls').mdbCarousel3d();
 
+const omdbUrl = `http://www.omdbapi.com/?apikey=${movieKey}&`
+
 
 //Displays initial list of movies
-
 displayMovies();
 
 //Displays the Movie List
 function displayMovies () {
+    let starCount = ["&#9734", "&#9734", "&#9734", "&#9734", "&#9734"]
+    let userRating = ""
     let finalHtml = "";
     fetch(url)
         .then(response => response.json())
@@ -19,6 +22,9 @@ function displayMovies () {
             $("#accordionMovies").empty();
             let reverseMovie = movies.reverse()
             reverseMovie.forEach(movie => {
+                for(let i = 0; i < movie.rating; i++) {
+                    userRating += starCount[i];
+                }
                 finalHtml += `<div class="card">`
                 finalHtml += `<div class="card-header" id="heading${movie.id}">`
                 finalHtml += `<h2 class="mb-0">`
@@ -29,8 +35,12 @@ function displayMovies () {
                 finalHtml += `</div>`
                 finalHtml += `<div id="collapse${movie.id}" class="collapse" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">`
                 finalHtml += `<div class="card-body">`
-                finalHtml += `<p>Rating: ${movie.rating}</p>`
+                finalHtml += `<p>Rating: ${userRating}</p>`
+                finalHtml += `<p>Year: ${movie.year}</p>`
                 finalHtml += `<p>Genre: ${movie.genre}</p>`
+                finalHtml += `<p>Director: ${movie.director}</p>`
+                finalHtml += `<p>Actors: ${movie.actors}</p>`
+                finalHtml += `<p>Plot: ${movie.plot}</p>`
                 if(typeof movie.review === "undefined") {
                     finalHtml += `<p>Tell us about ${movie.title}!`
                 } else {
@@ -43,6 +53,7 @@ function displayMovies () {
                 finalHtml += `</div>`
                 finalHtml += `</div>`
                 finalHtml += `</div>`
+                userRating = "";
             });
             setTimeout(function () {
                 $("#loading").css("display", "none");
@@ -53,6 +64,7 @@ function displayMovies () {
 }
 
 
+/* --- ~~~ Event Listeners ~~~ --- */
 //Modal function
 $(document).on("click", ".editMovie", function (e) {
     e.preventDefault();
@@ -91,41 +103,53 @@ $(document).on("click", ".deleteMovie", function (e) {
 //Button to add a movie
 $("#addMovieButton").click(function (e) {
     e.preventDefault();
-    addMovie()
+    addMovie($("#addMovieTitle").val().trim());
 })
 
+// select menu stay open
+$(".selectMenu").on('click', function(e) {
+    e.stopPropagation();
+});
 
 
-/*Functions*/
+
+/* --- ~~~ Functions ~~~ --- */
 //Adds a movie to server
-function addMovie () {
-    let userMovieTitle = document.getElementById("addMovieTitle").value
-    let userMovieRating = document.getElementById("addMovieRating").value
-    let userMovieGenre = document.getElementById("addMovieGenre").value
+function addMovie (movie) {
 
-    const movies = {
-        "title": userMovieTitle,
-        "rating": userMovieRating,
-        "genre": userMovieGenre
-    };
+    let userMovieRating = $("#addMovieRating").val();
 
-    const options = {
-        "method": "POST",
-        "headers": {
-            'Content-Type': 'application/json'
-        },
-        "body": JSON.stringify(movies)
-    };
-
-
-    fetch(url, options)
+    fetch(`${omdbUrl}t=${movie}`)
         .then(response => response.json())
-        .then(movie => {
-            $("#loading").css("display", "block");
-            displayMovies();
-        })
-        .catch(errors => console.log(errors));
+        .then(data => {
+            console.log(data);
+            const movies = {
+                "title": data.Title,
+                "rating": userMovieRating,
+                "year": data.Year,
+                "genre": data.Genre,
+                "director": data.Director,
+                "actors": data.Actors,
+                "plot": data.Plot
+            }
 
+            const options = {
+                "method": "POST",
+                "headers": {
+                    'Content-Type': 'application/json'
+                },
+                "body": JSON.stringify(movies)
+            }
+
+            fetch(url, options)
+                .then(response => response.json())
+                .then(movie => {
+                    $("#loading").css("display", "block");
+                    displayMovies();
+                })
+                .catch(errors => console.log(errors));
+        })
+        .catch(errors => console.log(errors))
 }
 
 // Edit an existing movie
@@ -156,7 +180,7 @@ function editMovie (id) {
         .then(response => response.json())
         .then(movie => {
             $("#loading").css("display", "block")
-        displayMovies()
+            displayMovies()
         })
         .catch(errors => console.log(errors));
 }
@@ -183,9 +207,3 @@ function deleteMovie (id) {
             .catch(errors => console.log(errors));
     }
 }
-
-
-// select menu stay open
-$('.selectMenu').on('click', function(e) {
-    e.stopPropagation();
-});
