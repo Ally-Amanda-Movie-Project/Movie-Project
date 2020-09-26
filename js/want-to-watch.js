@@ -7,32 +7,42 @@ $(document).ready(function () {
     $('.add-items').submit(function (event) {
         //prevents the page from refreshing
         event.preventDefault();
-
-        var item = $('#todo-list-item').val();
+        let finalHtml = ""
+        let item = $('#todo-list-item').val();
 
         if(item) {
-            $("#list-items").append("<li class='list-group-item form-check'><input class='checkbox form-check-input' type='checkbox'/><label class=\"form-check-label\" for=\"defaultCheck1\">" + item + "</label><a class='remove'><i class=\"far fa-trash-alt\"></i> </a></li>");
+            finalHtml += `<li class='list-group-item form-check'>`
+            finalHtml += `<label class="form-check-label" for="defaultCheck1">`
+            finalHtml += `${item}`
+            finalHtml += `</label>`
+            finalHtml += `<a class='remove'>`
+            finalHtml += `<i class=\"far fa-trash-alt\"></i>`
+            finalHtml += `</a>`
+            finalHtml += `<a class='addWatchlistMovie' id="${item}">`
+            finalHtml += ` `
+            finalHtml += `<i class=\"far fa-plus-square\"></i>`
+            finalHtml += `</a>`
+            finalHtml += `</li>`
+
+            $("#list-items").append(finalHtml);
             // adds item to local storage
             localStorage.setItem('listItems', $("#list-items").html());
             $('#todo-list-item').val("");
         }
     });
 
-    $(document).on('click','.checkbox', function () {
-        if($(this).attr('checked')) {
-            $(this).removeAttr('checked');
-        } else {
-            $(this).attr('checked','checked');
-        }
-        $(this).parent().toggleClass('completed');
-
-        localStorage.setItem('listItems', $('#list-items').html());
-    });
 
     $(document).on('click','.remove', function () {
         $(this).parent().remove();
         localStorage.setItem('listItems', $('#list-items').html());
 
     });
+
+    $(document).on('click', '.addWatchlistMovie', function () {
+        let watchlistMovie = $(this).attr("id")
+        console.log(watchlistMovie);
+        addMovie(watchlistMovie);
+        $(this).parent().remove();
+    })
 
 });

@@ -22,6 +22,7 @@ function displayMovies () {
             $("#accordionMovies").empty();
             let reverseMovie = movies.reverse()
             reverseMovie.forEach(movie => {
+                //changes number rating to a star rating
                 for(let i = 0; i < movie.rating; i++) {
                     userRating += starCount[i];
                 }
@@ -53,6 +54,7 @@ function displayMovies () {
                 finalHtml += `</div>`
                 finalHtml += `</div>`
                 finalHtml += `</div>`
+                //clears out the userRating variable so it doesn't add too many stars to the list item.
                 userRating = "";
             });
             setTimeout(function () {
@@ -84,6 +86,8 @@ $(document).on("click", ".editMovie", function (e) {
     $("#saveChanges").attr("data-id", movieID);
 })
 
+
+//This saves the edited rating
 $("#saveChanges").click(function () {
     let movieID = $(this).data("id");
     console.log(movieID);
@@ -91,11 +95,13 @@ $("#saveChanges").click(function () {
     $("#myModal").modal('hide');
 })
 
+//hides the modal when they click "x"
 $(document).on("click", ".close", function () {
     $("#myModal").modal("hide");
 })
 
-$(document).on("click", ".deleteMovie", function (e) {
+//deletes a movie
+$(document).on("click", ".deleteMovie", function () {
     let movieID = $(this).data("id");
     deleteMovie(movieID)
 })
@@ -106,7 +112,7 @@ $("#addMovieButton").click(function (e) {
     addMovie($("#addMovieTitle").val().trim());
 })
 
-// select menu stay open
+// select menu stay open on add movie button
 $(".selectMenu").on('click', function(e) {
     e.stopPropagation();
 });
@@ -119,6 +125,7 @@ function addMovie (movie) {
 
     let userMovieRating = $("#addMovieRating").val();
 
+    //fetches information from the OMDB api
     fetch(`${omdbUrl}t=${movie}`)
         .then(response => response.json())
         .then(data => {
@@ -141,6 +148,7 @@ function addMovie (movie) {
                 "body": JSON.stringify(movies)
             }
 
+            //adds the data fetched from OMDB and posts it onto our api
             fetch(url, options)
                 .then(response => response.json())
                 .then(movie => {
@@ -152,6 +160,7 @@ function addMovie (movie) {
         .catch(errors => console.log(errors))
 }
 
+// TODO change to only allow user to edit rating
 // Edit an existing movie
 function editMovie (id) {
     let displayURL = `${url}/${id}`
