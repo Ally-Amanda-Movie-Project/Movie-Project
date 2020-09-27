@@ -14,10 +14,10 @@ body {
     border: black 4px solid;
     font-family: 'Roboto Mono', monospace;
     font-size: 1.25em;
+
 }
 .nav-link:hover{
     text-decoration: underline;
-
 }
 /*--------------dropdown menu------------------*/
 
