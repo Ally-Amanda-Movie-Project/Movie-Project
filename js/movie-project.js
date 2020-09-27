@@ -36,6 +36,7 @@ function displayMovies () {
                 finalHtml += `</div>`
                 finalHtml += `<div id="collapse${movie.id}" class="collapse" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">`
                 finalHtml += `<div class="card-body">`
+                finalHtml += `<img src="${movie.poster}" alt=""/>`
                 finalHtml += `<p>Rating: ${userRating}</p>`
                 finalHtml += `<p>Year: ${movie.year}</p>`
                 finalHtml += `<p>Genre: ${movie.genre}</p>`
@@ -76,9 +77,8 @@ $(document).on("click", ".editMovie", function (e) {
     fetch(displayURL)
         .then(response => response.json())
         .then(movie => {
-            $("#editMovieTitle").val(movie.title);
             $("#editMovieRating").val(movie.rating);
-            $("#editMovieGenre").val(movie.genre);
+            $(".movie-title").append(movie.title);
             $("#editMovieReview").val(movie.review);
         })
         .catch(errors => console.log(errors));
@@ -97,6 +97,7 @@ $("#saveChanges").click(function () {
 
 //hides the modal when they click "x"
 $(document).on("click", ".close", function () {
+    $(".movie-title").html(" ");
     $("#myModal").modal("hide");
 })
 
@@ -131,6 +132,7 @@ function addMovie (movie) {
         .then(data => {
             console.log(data);
             const movies = {
+                "poster": data.Poster,
                 "title": data.Title,
                 "rating": userMovieRating,
                 "year": data.Year,
@@ -164,16 +166,12 @@ function addMovie (movie) {
 // Edit an existing movie
 function editMovie (id) {
     let displayURL = `${url}/${id}`
-    let editMovieTitle = document.getElementById("editMovieTitle").value
     let editMovieRating = document.getElementById("editMovieRating").value
-    let editMovieGenre = document.getElementById("editMovieGenre").value
     let editMovieReview = document.getElementById("editMovieReview").value
 
 
     const movies = {
-        "title": editMovieTitle,
         "rating": editMovieRating,
-        "genre": editMovieGenre,
         "review": editMovieReview
     }
 

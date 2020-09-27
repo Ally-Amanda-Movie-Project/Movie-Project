@@ -43,6 +43,7 @@ $(document).ready(function () {
         console.log(watchlistMovie);
         addMovie(watchlistMovie);
         $(this).parent().remove();
+        localStorage.setItem('listItems', $('#list-items').html());
     })
 
 });

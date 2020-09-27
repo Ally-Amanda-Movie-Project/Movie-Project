@@ -205,22 +205,20 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
             </div>
         </div>
 
-        <!--Modal Starts-->
+        <!--Edit Modal Starts-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered " role="document">
                 <div class="modal-content movieModal">
                     <div class="modal-header">
-                        <h5 class="modal-title movie-title" id="exampleModalLongTitle">Edit Movie</h5>
+                        <h5 class="modal-title movie-title" id="exampleModalLongTitle">
+                            <!--Movie Title Goes here-->
+                        </h5>
                         <button type="button" class="close"  aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <form class="px-4 py-3">
-                            <div class="form-group">
-                                <label for="addMovieTitle">Movie Title</label>
-                                <input type="text" class="form-control" id="editMovieTitle" value="Movie">
-                            </div>
                             <!--  movie rating dropdown-->
                             <div class="form-group selectMenu">
                                 <select class="custom-select form-control" id="editMovieRating">
@@ -230,18 +228,6 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
                                     <option value="3">&#9734&#9734&#9734</option>
                                     <option value="4">&#9734&#9734&#9734&#9734</option>
                                     <option value="5">&#9734&#9734&#9734&#9734&#9734</option>
-                                </select>
-                            </div>
-                            <!--  movie genre dropdown-->
-                            <div class="form-group selectMenu">
-                                <select class="custom-select form-control" id="editMovieGenre">
-                                    <option selected>What did you watch?</option>
-                                    <option value="Children">Children</option>
-                                    <option value="SciFi">SciFi</option>
-                                    <option value="Comedy">Comedy</option>
-                                    <option value="Romance">Romance</option>
-                                    <option value="Horror">Horror</option>
-                                    <option value="TV">TV</option>
                                 </select>
                             </div>
                             <div class="form-group">
