@@ -41,9 +41,64 @@ $(document).ready(function () {
     $(document).on('click', '.addWatchlistMovie', function () {
         let watchlistMovie = $(this).attr("id")
         console.log(watchlistMovie);
-        addMovie(watchlistMovie);
-        $(this).parent().remove();
-        localStorage.setItem('listItems', $('#list-items').html());
+        $(".movie-title").html(watchlistMovie)
+        $("#addMovieWatchlist").attr("data-id", watchlistMovie);
+        $("#addModal").modal("toggle");
     })
+
+    $(document).on('click', '#addMovieWatchlist', function () {
+        let watchlistMovie = $("#addMovieWatchlist").attr("data-id");
+        addMovieFromWatchlist(watchlistMovie)
+        $(".remove").parent().remove();
+        localStorage.setItem('listItems', $('#list-items').html());
+        $("#addModal").modal("hide");
+    })
+
+
+    function addMovieFromWatchlist (movie) {
+        let addMovieRatingWatchlist = document.getElementById("addMovieRatingWatchlist").value
+        let addMovieWatchWatchlist = document.getElementById("addMovieWatchWatchlist").value
+        let addMovieReviewWatchlist = document.getElementById("addMovieReviewWatchlist").value
+        let addMovieKOLWatchlist = document.getElementById("addMovieKOLWatchlist").value
+
+        fetch(`${omdbUrl}t=${movie}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                const movies = {
+                    "poster": data.Poster,
+                    "title": data.Title,
+                    "rating": addMovieRatingWatchlist,
+                    "year": data.Year,
+                    "genre": data.Genre,
+                    "director": data.Director,
+                    "actors": data.Actors,
+                    "plot": data.Plot,
+                    "watch": addMovieWatchWatchlist,
+                    "review": addMovieReviewWatchlist,
+                    "kindOfLike": addMovieKOLWatchlist
+                }
+
+                const options = {
+                    "method": "POST",
+                    "headers": {
+                        'Content-Type': 'application/json'
+                    },
+                    "body": JSON.stringify(movies)
+                }
+
+                //adds the data fetched from OMDB and posts it onto our api
+                fetch(url, options)
+                    .then(response => response.json())
+                    .then(movie => {
+                        $("#loading").css("display", "block");
+                        displayMovies();
+                        displayCarousel();
+                    })
+                    .catch(errors => console.log(errors));
+            })
+            .catch(errors => console.log(errors))
+    }
+
 
 });

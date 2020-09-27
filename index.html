@@ -204,7 +204,70 @@
                 </div>
             </div>
         </div>
-        <!--Modal Ends-->
+        <!--Edit Modal Ends-->
+
+        <!-- Add Modal Starts -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered " role="document">
+                <div class="modal-content movieModal">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title movie-title">
+                            <!--Movie Title Goes here-->
+                        </h5>
+                        <button type="button" class="close buttonDesign"  aria-label="Close">
+
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="px-4 py-3">
+                            <!--  movie rating dropdown-->
+                            <div class="form-group selectMenu">
+                                <select class="custom-select form-control" id="addMovieRatingWatchlist">
+                                    <option selected>Select a &#9734 rating</option>
+                                    <option value="1">&#9734</option>
+                                    <option value="2">&#9734&#9734</option>
+                                    <option value="3">&#9734&#9734&#9734</option>
+                                    <option value="4">&#9734&#9734&#9734&#9734</option>
+                                    <option value="5">&#9734&#9734&#9734&#9734&#9734</option>
+                                </select>
+                            </div>
+
+                            <!--  where did you watch movie -->
+                            <div class="form-group selectMenu">
+                                <select class="custom-select form-control" id="addMovieWatchWatchlist">
+                                    <option selected>Where did you watch?</option>
+                                    <option value="VHS">VHS</option>
+                                    <option value="DVD">DVD</option>
+                                    <option value="Big Screen">Big Screen</option>
+                                    <option value="Netflix">Netflix</option>
+                                    <option value="Hulu">Hulu</option>
+                                    <option value="Prime">Prime</option>
+                                    <option value="Disney+">Disney+</option>
+                                    <option value="Cable">Cable</option>
+                                </select>
+                            </div>
+                            <!--  movie review box-->
+
+                            <div class="form-group">
+                                <label for="editMovieReview">Write a review</label>
+                                <textarea class="form-control" id="addMovieReviewWatchlist" rows="3"></textarea>
+                            </div>
+                            <!--  movie suggestion box-->
+                            <div class="form-group">
+                                <label for="addMovieKOLWatchlist">This was kind of like...</label>
+                                <textarea class="form-control" id="addMovieKOLWatchlist" rows="3"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary buttonDesign" id="addMovieWatchlist">Add Movie</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
