@@ -94,7 +94,7 @@ function displayCarousel() {
                 } else {
                     finalHTML += `<div class="carousel-item">`
                 }
-                finalHTML +=`<img src="${movie.poster}" class="d-block w-100" alt="...">`
+                finalHTML +=`<img src="${movie.poster}" class="d-block w-100 moviePoster" alt="${movie.title}">`
                 finalHTML += `<div class="carousel-caption d-md-block">`
                 finalHTML +=`<h5>`
                 finalHTML +=  `${movie.title}`

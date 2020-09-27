@@ -94,8 +94,15 @@ body {
     /*opacity:.50;*/
     font-family: 'Roboto Mono', monospace;
 }
+.moviePoster {
+    height: 475px;
+}
 
 /*--------------to watch form------------------*/
+.watchlist {
+    margin-bottom: 200px;
+    margin-top: 50px;
+}
 .form-check {
     background-color: #f6ba43;
     font-family: 'Roboto Mono', monospace;
