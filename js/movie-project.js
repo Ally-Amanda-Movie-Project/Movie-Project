@@ -10,11 +10,12 @@ const omdbUrl = `http://www.omdbapi.com/?apikey=${movieKey}&`
 
 //Displays initial list of movies
 displayMovies();
+displayCarousel();
 
 //Displays the Movie List
 function displayMovies () {
-    let starCount = ["&#9734", "&#9734", "&#9734", "&#9734", "&#9734"]
-    let userRating = ""
+    let starCount = ["&#9734", "&#9734", "&#9734", "&#9734", "&#9734"];
+    let userRating = "";
     let finalHtml = "";
     fetch(url)
         .then(response => response.json())
@@ -76,6 +77,45 @@ function displayMovies () {
         .catch(errors => console.error(errors));
 }
 
+function displayCarousel() {
+    let starCount = ["&#9734", "&#9734", "&#9734", "&#9734", "&#9734"];
+    let finalHTML = "";
+    let userRating = "";
+    $(".carousel-inner").empty();
+    fetch(url)
+        .then(response => response.json())
+        .then(movies => {
+            movies.forEach(movie => {
+                for(let i = 0; i < movie.rating; i++) {
+                    userRating += starCount[i];
+                }
+                if(movie === movies[0]) {
+                    finalHTML += `<div class="carousel-item active">`
+                } else {
+                    finalHTML += `<div class="carousel-item">`
+                }
+                finalHTML +=`<img src="${movie.poster}" class="d-block w-100" alt="...">`
+                finalHTML += `<div class="carousel-caption d-md-block">`
+                finalHTML +=`<h5>`
+                finalHTML +=  `${movie.title}`
+                finalHTML += `</h5>`
+                finalHTML += `<p>`
+                finalHTML +=  `${userRating}`
+                finalHTML += `</p>`
+                finalHTML +=`<p>`
+                finalHTML +=  `${movie.review}`
+                finalHTML += `</p>`
+                finalHTML += `</div>`
+                finalHTML +=`</div>`
+                //clears out the userRating variable so it doesn't add too many stars to the list item.
+                userRating = "";
+            })
+            document.querySelector(".carousel-inner").innerHTML = finalHTML;
+            //clears out the userRating variable so it doesn't add too many stars to the list item.
+            userRating = "";
+        })
+        .catch(errors => console.error(errors));
+}
 
 /* --- ~~~ Event Listeners ~~~ --- */
 //Modal function
@@ -168,6 +208,7 @@ function addMovie (movie) {
                 .then(movie => {
                     $("#loading").css("display", "block");
                     displayMovies();
+                    displayCarousel();
                 })
                 .catch(errors => console.log(errors));
         })
@@ -185,16 +226,13 @@ function editMovie (id) {
 
     const movies = {
         "rating": editMovieRating,
-
-        "review": editMovieReview,
-       
         "watch": editMovieWatch,
         "review": editMovieReview,
         "kindOfLike": editMovieKOL
     }
 
     const options = {
-        "method": "PUT",
+        "method": "PATCH",
         "headers": {
             'Content-Type' : 'application/json'
         },
@@ -205,7 +243,8 @@ function editMovie (id) {
         .then(response => response.json())
         .then(movie => {
             $("#loading").css("display", "block")
-            displayMovies()
+            displayMovies();
+            displayCarousel();
         })
         .catch(errors => console.log(errors));
 }
@@ -227,7 +266,8 @@ function deleteMovie (id) {
             .then(response => response.json)
             .then(movie => {
                 $("#loading").css("display", "block");
-                displayMovies()
+                displayMovies();
+                displayCarousel();
             })
             .catch(errors => console.log(errors));
     }
