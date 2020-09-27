@@ -4,7 +4,7 @@
 body {
     width: 100%;
     height: 100vh;
-    background-color: darkslategray;
+    background-color: #f6f6f6;
     background-image: url("../img/positive.png");
 }
 /*--------------navbar------------------*/
@@ -13,7 +13,11 @@ body {
     background-color: #b0dcd6!important;
     border: black 4px solid;
     font-family: 'Roboto Mono', monospace;
-    font-size: 1.25em;
+    font-size: 1.5em;
+}
+.moveLinks{
+    position: relative;
+    top: 1em;
 }
 .nav-link:hover{
     text-decoration: underline;
@@ -38,21 +42,25 @@ body {
     display: flex;
     justify-content: center;
 }
+/*--------------accordian------------------*/
+
 .selectMenu, .form-group{
     border: black 4px solid;
 }
 .movieCards{
     border: black 4px solid;
     background-color: white;
-
 }
 .movieOpen{
     border: black 4px solid;
-
 }
+#accordionMovies {
+    display: none;
+}
+/*--------------modal------------------*/
+
 .movieModal{
     border: black 4px solid;
-
 }
 .card-header, .card-footer {
     border: black 4px solid;
@@ -61,7 +69,6 @@ body {
     border: black 4px solid;
     background-color: #f6ba43;
 }
-
 .movieList{
     font-family: 'Press Start 2P', cursive;
     color: black;
@@ -81,9 +88,6 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
-#accordionMovies {
-    display: none;
-}
 /*--------------carousel------------------*/
 .carousel-caption{
     background-color: #e8b0ae;
@@ -91,8 +95,7 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
-
-/*--------------to do form------------------*/
+/*--------------to watch form------------------*/
 .form-check {
     background-color: #f6ba43;
     font-family: 'Roboto Mono', monospace;
@@ -160,30 +163,26 @@ body {
 }
 
 /*-----------------footer-----------*/
-footer{
-    bottom: 0;
-    width: 100%;
-    height: 3em;
+footer {
+    /*bottom: 0;*/
+    /*width: 100%;*/
+    height: 5em;
     border: black 4px solid;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    position: fixed;
     background-color: #b0dcd6;
     margin: 0;
+}
+.footerContainer{
+    margin: 0;
+    padding: 0px!important;
+}
+.social{
+    color: black;
+    font-size: 2.5em;
 
 }
-#social-links > ul > li {
-    list-style: none;
+a:hover {
+    color: #e8b0ae!important
 }
-#social-links > ul > li > a{
-    color: #e8b0ae;
-    font-size: 2em;
-    padding: 1em;
-    height: 2em;
-    line-height: 2em ;
-}
-#social-links > ul > li > a:hover{
-    color: #f6ba43;
 
-}
+
+
