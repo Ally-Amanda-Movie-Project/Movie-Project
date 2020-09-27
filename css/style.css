@@ -57,6 +57,9 @@ body {
 #accordionMovies {
     display: none;
 }
+.btn.focus, .btn:focus {
+    box-shadow: none;
+}
 /*--------------modal------------------*/
 
 .movieModal{
