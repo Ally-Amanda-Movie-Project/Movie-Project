@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Movie App</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/want-to-watch.css">
@@ -17,7 +18,7 @@
         <!--Navigation Bar Starts-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">
-                <img src="img/Have.png" width="80" height="90" alt="Have You Seen It logo" loading="lazy">
+                <img src="img/Have.png" width="90" height="100" alt="Have You Seen logo" loading="lazy">
             </a>
         <!--button-->
             <ul class="navbar-nav">
@@ -27,7 +28,7 @@
                 </button>
                     <div class="dropdown-menu">
                         <form class="px-4 py-3">
-                            <div class="form-group">
+                            <div class="form-group dropdownMoveTitle">
                                 <label for="addMovieTitle">Movie Title</label>
                                 <input type="text" class="form-control" id="addMovieTitle" placeholder="Lion King">
                             </div>
@@ -43,21 +44,27 @@
                                 </select>
                             </div>
                             <!--  movie genre dropdown-->
-<!--                            <div class="form-group selectMenu">-->
-<!--                                <select class="custom-select form-control" id="addMovieGenre">-->
-<!--                                    <option selected>What did you watch?</option>-->
-<!--                                    <option value="Children">Children</option>-->
-<!--                                    <option value="SciFi">SciFi</option>-->
-<!--                                    <option value="Comedy">Comedy</option>-->
-<!--                                    <option value="Romance">Romance</option>-->
-<!--                                    <option value="Horror">Horror</option>-->
-<!--                                    <option value="TV">TV</option>-->
-<!--                                </select>-->
-<!--                            </div>-->
-                                <button type="submit" class="btn btn-primary" id="addMovieButton">Add Movie</button>
+
+
+<!--                             <div class="form-group selectMenu">
+                                <select class="custom-select form-control" id="addMovieGenre">
+                                    <option selected>What did you watch?</option>
+                                    <option value="Children">Children</option>
+                                    <option value="SciFi">SciFi</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Drama">Drama</option>
+                                    <option value="Action">Action</option>
+                                    <option value="TV">TV</option>
+                                </select>
+                            </div> -->
+                                <button type="submit" class="btn btn-primary buttonDesign" id="addMovieButton">Add Movie</button>
                         </form>
                         <div class="dropdown-divider"></div>
-                       Have you seen
+                        <div id="longLogoDrop">
+                            <img src="img/Have.png" width="60" height="60"  alt="Have You Seen logo" loading="lazy">
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -70,7 +77,7 @@
 
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
+                <ul class="navbar-nav mt-2 mt-lg-0 ml-auto" id="navText">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                     </li>
@@ -83,7 +90,7 @@
                     <!--user icon-->
                     <li class="nav-item">
                         <a class="navbar-brand" href="#">
-                            <img src="img/user-icon.png" width="60" height="60" alt="gradiant user image icon" loading="lazy">
+                            <img src="img/user-icon2.png" width="80" height="80" alt="user image icon" loading="lazy">
                         </a>
                     </li>
                 </ul>
@@ -94,13 +101,13 @@
         <div class="row ml-lg-5">
 
             <svg width="641" height="118" viewBox="0 0 641 118" fill="none" xmlns="http://www.w3.org/2000/svg" id="loading">
-                <path d="M15.2812 103.734H69.1875V116H0.203125V2.25H15.2812V103.734Z"  stroke="white" stroke-width="5" />
-                <path d="M168.641 62.7969C168.641 73.9427 166.766 83.6823 163.016 92.0156C159.266 100.297 153.953 106.625 147.078 111C140.203 115.375 132.182 117.562 123.016 117.562C114.057 117.562 106.115 115.375 99.1875 111C92.2604 106.573 86.8698 100.297 83.0156 92.1719C79.2135 83.9948 77.2604 74.5417 77.1562 63.8125V55.6094C77.1562 44.6719 79.0573 35.0104 82.8594 26.625C86.6615 18.2396 92.026 11.8333 98.9531 7.40625C105.932 2.92708 113.901 0.6875 122.859 0.6875C131.974 0.6875 139.995 2.90104 146.922 7.32812C153.901 11.7031 159.266 18.0833 163.016 26.4688C166.766 34.8021 168.641 44.5156 168.641 55.6094V62.7969ZM153.719 55.4531C153.719 41.9635 151.01 31.625 145.594 24.4375C140.177 17.1979 132.599 13.5781 122.859 13.5781C113.38 13.5781 105.906 17.1979 100.438 24.4375C95.0208 31.625 92.2344 41.625 92.0781 54.4375V62.7969C92.0781 75.8698 94.8125 86.1562 100.281 93.6562C105.802 101.104 113.38 104.828 123.016 104.828C132.703 104.828 140.203 101.312 145.516 94.2812C150.828 87.1979 153.562 77.0677 153.719 63.8906V55.4531Z"  stroke="white" stroke-width="5" />
-                <path d="M252.234 86.3125H204.578L193.875 116H178.406L221.844 2.25H234.969L278.484 116H263.094L252.234 86.3125ZM209.109 73.9688H247.781L228.406 20.7656L209.109 73.9688Z"  stroke="white" stroke-width="5" />
-                <path d="M293.797 116V2.25H325.906C335.802 2.25 344.552 4.4375 352.156 8.8125C359.76 13.1875 365.62 19.4115 369.734 27.4844C373.901 35.5573 376.01 44.8281 376.062 55.2969V62.5625C376.062 73.2917 373.979 82.6927 369.812 90.7656C365.698 98.8385 359.786 105.036 352.078 109.359C344.422 113.682 335.49 115.896 325.281 116H293.797ZM308.797 14.5938V103.734H324.578C336.141 103.734 345.125 100.141 351.531 92.9531C357.99 85.7656 361.219 75.5312 361.219 62.25V55.6094C361.219 42.6927 358.172 32.6667 352.078 25.5312C346.036 18.3438 337.443 14.6979 326.297 14.5938H308.797Z" stroke="white" stroke-width="5" />
-                <path d="M414.891 116H399.891V2.25H414.891V116Z"  stroke="white" stroke-width="5" />
-                <path d="M529.812 116H514.734L457.469 28.3438V116H442.391V2.25H457.469L514.891 90.2969V2.25H529.812V116Z" stroke="white" stroke-width="5" />
-                <path d="M640.438 101.078C636.583 106.599 631.193 110.74 624.266 113.5C617.391 116.208 609.37 117.562 600.203 117.562C590.932 117.562 582.703 115.401 575.516 111.078C568.328 106.703 562.755 100.505 558.797 92.4844C554.891 84.4635 552.885 75.1667 552.781 64.5938V54.6719C552.781 37.5365 556.766 24.2552 564.734 14.8281C572.755 5.40104 584.005 0.6875 598.484 0.6875C610.359 0.6875 619.917 3.73438 627.156 9.82812C634.396 15.8698 638.823 24.4635 640.438 35.6094H625.438C622.625 20.5573 613.667 13.0312 598.562 13.0312C588.51 13.0312 580.88 16.5729 575.672 23.6562C570.516 30.6875 567.911 40.8958 567.859 54.2812V63.5781C567.859 76.3385 570.776 86.4948 576.609 94.0469C582.443 101.547 590.333 105.297 600.281 105.297C605.906 105.297 610.828 104.672 615.047 103.422C619.266 102.172 622.755 100.062 625.516 97.0938V71.5469H599.188V59.3594H640.438V101.078Z" stroke="white" stroke-width="5" />
+                <path d="M15.2812 103.734H69.1875V116H0.203125V2.25H15.2812V103.734Z"  stroke="black" stroke-width="5" />
+                <path d="M168.641 62.7969C168.641 73.9427 166.766 83.6823 163.016 92.0156C159.266 100.297 153.953 106.625 147.078 111C140.203 115.375 132.182 117.562 123.016 117.562C114.057 117.562 106.115 115.375 99.1875 111C92.2604 106.573 86.8698 100.297 83.0156 92.1719C79.2135 83.9948 77.2604 74.5417 77.1562 63.8125V55.6094C77.1562 44.6719 79.0573 35.0104 82.8594 26.625C86.6615 18.2396 92.026 11.8333 98.9531 7.40625C105.932 2.92708 113.901 0.6875 122.859 0.6875C131.974 0.6875 139.995 2.90104 146.922 7.32812C153.901 11.7031 159.266 18.0833 163.016 26.4688C166.766 34.8021 168.641 44.5156 168.641 55.6094V62.7969ZM153.719 55.4531C153.719 41.9635 151.01 31.625 145.594 24.4375C140.177 17.1979 132.599 13.5781 122.859 13.5781C113.38 13.5781 105.906 17.1979 100.438 24.4375C95.0208 31.625 92.2344 41.625 92.0781 54.4375V62.7969C92.0781 75.8698 94.8125 86.1562 100.281 93.6562C105.802 101.104 113.38 104.828 123.016 104.828C132.703 104.828 140.203 101.312 145.516 94.2812C150.828 87.1979 153.562 77.0677 153.719 63.8906V55.4531Z"  stroke="black" stroke-width="5" />
+                <path d="M252.234 86.3125H204.578L193.875 116H178.406L221.844 2.25H234.969L278.484 116H263.094L252.234 86.3125ZM209.109 73.9688H247.781L228.406 20.7656L209.109 73.9688Z"  stroke="black" stroke-width="5" />
+                <path d="M293.797 116V2.25H325.906C335.802 2.25 344.552 4.4375 352.156 8.8125C359.76 13.1875 365.62 19.4115 369.734 27.4844C373.901 35.5573 376.01 44.8281 376.062 55.2969V62.5625C376.062 73.2917 373.979 82.6927 369.812 90.7656C365.698 98.8385 359.786 105.036 352.078 109.359C344.422 113.682 335.49 115.896 325.281 116H293.797ZM308.797 14.5938V103.734H324.578C336.141 103.734 345.125 100.141 351.531 92.9531C357.99 85.7656 361.219 75.5312 361.219 62.25V55.6094C361.219 42.6927 358.172 32.6667 352.078 25.5312C346.036 18.3438 337.443 14.6979 326.297 14.5938H308.797Z" stroke="black" stroke-width="5" />
+                <path d="M414.891 116H399.891V2.25H414.891V116Z"  stroke="black" stroke-width="5" />
+                <path d="M529.812 116H514.734L457.469 28.3438V116H442.391V2.25H457.469L514.891 90.2969V2.25H529.812V116Z" stroke="black" stroke-width="5" />
+                <path d="M640.438 101.078C636.583 106.599 631.193 110.74 624.266 113.5C617.391 116.208 609.37 117.562 600.203 117.562C590.932 117.562 582.703 115.401 575.516 111.078C568.328 106.703 562.755 100.505 558.797 92.4844C554.891 84.4635 552.885 75.1667 552.781 64.5938V54.6719C552.781 37.5365 556.766 24.2552 564.734 14.8281C572.755 5.40104 584.005 0.6875 598.484 0.6875C610.359 0.6875 619.917 3.73438 627.156 9.82812C634.396 15.8698 638.823 24.4635 640.438 35.6094H625.438C622.625 20.5573 613.667 13.0312 598.562 13.0312C588.51 13.0312 580.88 16.5729 575.672 23.6562C570.516 30.6875 567.911 40.8958 567.859 54.2812V63.5781C567.859 76.3385 570.776 86.4948 576.609 94.0469C582.443 101.547 590.333 105.297 600.281 105.297C605.906 105.297 610.828 104.672 615.047 103.422C619.266 102.172 622.755 100.062 625.516 97.0938V71.5469H599.188V59.3594H640.438V101.078Z" stroke="black" stroke-width="5" />
             </svg>
 
             <!--Movie List Starts-->
@@ -194,9 +201,9 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
                         <!-- end empty state -->
                     </div>
                     <div class="card-footer">
-                        <form class="add-items form-group">
-                            <input type="text" class="form-control" id="todo-list-item" placeholder="Example: The Matrix">
-                            <button class="add btn btn-dark" type="submit">Add to List</button>
+                        <form class="add-items">
+                            <input type="text" class="form-control" id="todo-list-item" placeholder="Example: 2020 Mulan - Disney+">
+                            <button class="add btn buttonDesign" type="submit">Add to List</button>
                         </form>
                     </div>
                 </div>
@@ -210,10 +217,12 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
             <div class="modal-dialog modal-dialog-centered " role="document">
                 <div class="modal-content movieModal">
                     <div class="modal-header">
+
                         <h5 class="modal-title movie-title" id="exampleModalLongTitle">
                             <!--Movie Title Goes here-->
                         </h5>
-                        <button type="button" class="close"  aria-label="Close">
+                        <button type="button" class="close buttonDesign"  aria-label="Close">
+
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -230,14 +239,51 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
                                     <option value="5">&#9734&#9734&#9734&#9734&#9734</option>
                                 </select>
                             </div>
+
+                            <!--  movie genre dropdown-->
+<!--                             <div class="form-group selectMenu">
+                                <select class="custom-select form-control" id="editMovieGenre">
+                                    <option selected>What did you watch?</option>
+                                    <option value="Children">Children</option>
+                                    <option value="SciFi">SciFi</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Drama">Drama</option>
+                                    <option value="Action">Action</option>
+                                    <option value="TV">TV</option>
+                                </select>
+                            </div> -->
+                          
+                            <!--  where did you watch movie -->
+                            <div class="form-group selectMenu">
+                                <select class="custom-select form-control" id="editMovieWatch">
+                                    <option selected>Where did you watch?</option>
+                                    <option value="VHS">VHS</option>
+                                    <option value="DVD">DVD</option>
+                                    <option value="Big Screen">Big Screen</option>
+                                    <option value="Netflix">Netflix</option>
+                                    <option value="Hulu">Hulu</option>
+                                    <option value="Prime">Prime</option>
+                                    <option value="Disney+">Disney+</option>
+                                    <option value="Cable">Cable</option>
+                                </select>
+                            </div>
+                            <!--  movie review box-->
+
                             <div class="form-group">
                                 <label for="editMovieReview">Write a review</label>
                                 <textarea class="form-control" id="editMovieReview" rows="3"></textarea>
                             </div>
+                            <!--  movie suggestion box-->
+                            <div class="form-group">
+                                <label for="editMovieKOL">This was kind of like...</label>
+                                <textarea class="form-control" id="editMovieKOL" rows="3"></textarea>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="saveChanges">Save changes</button>
+                        <button type="button" class="btn btn-primary buttonDesign" id="saveChanges">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -261,6 +307,17 @@ C/O https://placeholder.com/" class="d-block w-100" alt="...">
 <!--        <button id="add-movie">Add a Movie!</button>-->
 <!--    </form>-->
 
+
+    <!--footer-->
+    <footer>
+        <div id="social-links">
+            <ul>
+                <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram-square"></i></a></li>
+            </ul>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

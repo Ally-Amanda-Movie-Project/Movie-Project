@@ -27,15 +27,15 @@ function displayMovies () {
                     userRating += starCount[i];
                 }
                 finalHtml += `<div class="card">`
-                finalHtml += `<div class="card-header" id="heading${movie.id}">`
+                finalHtml += `<div class="card-header " id="heading${movie.id}">`
                 finalHtml += `<h2 class="mb-0">`
-                finalHtml += `<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${movie.id}" aria-expanded="true" aria-controls="collapse${movie.id}">`
+                finalHtml += `<button class="btn btn-link btn-block text-left collapsed movieList" type="button" data-toggle="collapse" data-target="#collapse${movie.id}" aria-expanded="true" aria-controls="collapse${movie.id}">`
                 finalHtml += `${movie.title}`
                 finalHtml += `</button>`
                 finalHtml += `</h2>`
                 finalHtml += `</div>`
                 finalHtml += `<div id="collapse${movie.id}" class="collapse" aria-labelledby="heading${movie.id}" data-parent="#accordionMovies">`
-                finalHtml += `<div class="card-body">`
+                finalHtml += `<div class="card-body movieInfo">`
                 finalHtml += `<img src="${movie.poster}" alt=""/>`
                 finalHtml += `<p>Rating: ${userRating}</p>`
                 finalHtml += `<p>Year: ${movie.year}</p>`
@@ -43,14 +43,24 @@ function displayMovies () {
                 finalHtml += `<p>Director: ${movie.director}</p>`
                 finalHtml += `<p>Actors: ${movie.actors}</p>`
                 finalHtml += `<p>Plot: ${movie.plot}</p>`
+                if(typeof movie.watch === "undefined") {
+                    finalHtml += `<p>Where did you watch ${movie.title}?`
+                } else {
+                    finalHtml += `<p>Whatched on: ${movie.watch}</p>`
+                }
                 if(typeof movie.review === "undefined") {
                     finalHtml += `<p>Tell us about ${movie.title}!`
                 } else {
                     finalHtml += `<p>Review: ${movie.review}</p>`
                 }
+                if(typeof movie.kindOfLike === "undefined") {
+                    finalHtml += `<p>If you like ${movie.title}, you'll really like...`
+                } else {
+                    finalHtml += `<p>Kind of Like: ${movie.kindOfLike}</p>`
+                }
                 finalHtml += `<div class="btn-group" role="group" aria-label="edit-and-delete">`
-                finalHtml += `<button type="button" data-id=${movie.id} class="btn btn-secondary editMovie">Edit</button>`
-                finalHtml += `<button type="button" class="btn btn-secondary deleteMovie" data-id=${movie.id}>Delete</button>`
+                finalHtml += `<button type="button" data-id=${movie.id} class="btn btn-secondary editMovie buttonDesign">Edit</button>`
+                finalHtml += `<button type="button" class="btn btn-secondary deleteMovie buttonDesign" data-id=${movie.id}>Delete</button>`
                 finalHtml += `</div>`
                 finalHtml += `</div>`
                 finalHtml += `</div>`
@@ -78,8 +88,10 @@ $(document).on("click", ".editMovie", function (e) {
         .then(response => response.json())
         .then(movie => {
             $("#editMovieRating").val(movie.rating);
-            $(".movie-title").append(movie.title);
+            $(".movie-title").append(movie.title)
+            $("#editMovieWatch").val(movie.watch);
             $("#editMovieReview").val(movie.review);
+            $("#editMovieKOL").val(movie.kindOfLike);
         })
         .catch(errors => console.log(errors));
     $("#myModal").modal("toggle")
@@ -166,13 +178,19 @@ function addMovie (movie) {
 // Edit an existing movie
 function editMovie (id) {
     let displayURL = `${url}/${id}`
-    let editMovieRating = document.getElementById("editMovieRating").value
+    let editMovieRating = document.getElementById("editMovieRating").value   
+    let editMovieWatch = document.getElementById("editMovieWatch").value
     let editMovieReview = document.getElementById("editMovieReview").value
-
+    let editMovieKOL = document.getElementById("editMovieKOL").value
 
     const movies = {
         "rating": editMovieRating,
+
         "review": editMovieReview
+       
+        "watch": editMovieWatch,
+        "review": editMovieReview,
+        "kindOfLike": editMovieKOL
     }
 
     const options = {

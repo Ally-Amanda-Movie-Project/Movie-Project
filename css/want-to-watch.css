@@ -1,9 +1,10 @@
 .app-title {
-    font-family: 'Lato', sans-serif;
+    /*font-family: 'Lato', sans-serif;*/
     text-align: center;
     margin-bottom: 20px;
     font-size: 40px;
-    opacity: 0.5;
+    font-family: 'Roboto Mono', monospace;
+
 }
 
 ul {

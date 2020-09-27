@@ -1,17 +1,42 @@
 * {
     box-sizing: border-box;
 }
-
-body{
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: darkslategray;
     background-image: url("../img/positive.png");
 }
+/*--------------navbar------------------*/
+
 .navbar{
     background-color: #b0dcd6!important;
     border: black 4px solid;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.25em;
 }
+.nav-link:hover{
+    text-decoration: underline;
+}
+/*--------------dropdown menu------------------*/
+
 .dropdown-menu{
     border: black 4px solid;
+    background-image: url("../img/positive.png");
+}
+.buttonDesign{
     background-color: #e8b0ae;
+    border: black 4px solid;
+    font-family: 'Press Start 2P', cursive;
+    color: black;
+}
+.dropdownMoveTitle{
+    background-color: #e8b0ae;
+}
+#longLogoDrop{
+    background-color: #e8b0ae;
+    display: flex;
+    justify-content: center;
 }
 .selectMenu, .form-group{
     border: black 4px solid;
@@ -19,6 +44,7 @@ body{
 .movieCards{
     border: black 4px solid;
     background-color: white;
+
 }
 .movieOpen{
     border: black 4px solid;
@@ -28,21 +54,56 @@ body{
     border: black 4px solid;
 
 }
+.card-header, .card-footer {
+    border: black 4px solid;
+}
+.card-body{
+    border: black 4px solid;
+    background-color: #f6ba43;
+}
 
-font-family: 'Press Start 2P', cursive;
-
-
-
-body {
-    width: 100%;
-    height: 100vh;
-    background-color: darkslategray;
+.movieList{
+    font-family: 'Press Start 2P', cursive;
+    color: black;
+    font-size: 16px;
+    /*display: flex;*/
+    /*justify-content: center;*/
+}
+.movieList:hover{
+    color: #b0dcd6;
+    text-decoration: none;
+}
+.movieList:active{
+    border: none;
+    text-decoration: none;
+}
+.movieInfo{
+    font-family: 'Roboto Mono', monospace;
 }
 
 #accordionMovies {
     display: none;
 }
+/*--------------carousel------------------*/
+.carousel-caption{
+    background-color: #e8b0ae;
+    opacity:.75;
+    font-family: 'Roboto Mono', monospace;
+}
 
+
+/*--------------to do form------------------*/
+.form-check {
+    background-color: #f6ba43;
+    font-family: 'Roboto Mono', monospace;
+}
+.add-items{
+    border: none;
+}
+.app-title{
+     background-color: #b0dcd6;
+ }
+/*-----------------loading animation-----------*/
 #loading {
     position: absolute;
     top: 30%;
@@ -98,3 +159,31 @@ body {
     }
 }
 
+/*-----------------footer-----------*/
+footer{
+    bottom: 0;
+    width: 100%;
+    height: 3em;
+    border: black 4px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: fixed;
+    background-color: #b0dcd6;
+    margin: 0;
+
+}
+#social-links > ul > li {
+    list-style: none;
+}
+#social-links > ul > li > a{
+    color: #e8b0ae;
+    font-size: 2em;
+    padding: 1em;
+    height: 2em;
+    line-height: 2em ;
+}
+#social-links > ul > li > a:hover{
+    color: #f6ba43;
+
+}
