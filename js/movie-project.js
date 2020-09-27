@@ -128,23 +128,25 @@ $(document).on("click", ".editMovie", function (e) {
         .then(response => response.json())
         .then(movie => {
             $("#editMovieRating").val(movie.rating);
-            $(".movie-title").append(movie.title)
+            $(".movie-title").html(movie.title)
             $("#editMovieWatch").val(movie.watch);
             $("#editMovieReview").val(movie.review);
             $("#editMovieKOL").val(movie.kindOfLike);
+            $("#saveChanges").attr("data-id", movieID);
         })
         .catch(errors => console.log(errors));
     $("#myModal").modal("toggle")
-    $("#saveChanges").attr("data-id", movieID);
 })
 
 
 //This saves the edited rating
 $("#saveChanges").click(function () {
-    let movieID = $(this).data("id");
+    $("#saveChanges").removeAttr("data-id");
+    let movieID = $(".editMovie").data("id");
     console.log(movieID);
-    editMovie(movieID);
-    $("#myModal").modal('hide');
+    // editMovie(movieID);
+    // $(".movie-title").html(" ");
+    // $("#myModal").modal('hide');
 })
 
 //hides the modal when they click "x"
