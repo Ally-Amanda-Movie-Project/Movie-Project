@@ -141,16 +141,15 @@ $(document).on("click", ".editMovie", function (e) {
 
 //This saves the edited rating
 $("#saveChanges").click(function () {
-    $("#saveChanges").removeAttr("data-id");
-    let movieID = $(".editMovie").data("id");
+    let movieID = $("#saveChanges").attr("data-id");
     console.log(movieID);
-    // editMovie(movieID);
-    // $(".movie-title").html(" ");
-    // $("#myModal").modal('hide');
+    editMovie(movieID);
+    $("#myModal").modal('hide');
 })
 
 //hides the modal when they click "x"
 $(document).on("click", ".close", function () {
+    $("#saveChanges").removeAttr("data-id");
     $(".movie-title").html(" ");
     $("#myModal").modal("hide");
 })
