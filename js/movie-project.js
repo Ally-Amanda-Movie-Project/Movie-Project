@@ -99,7 +99,7 @@ function displayCarousel() {
                 finalHTML +=`<h5>`
                 finalHTML +=  `${movie.title}`
                 finalHTML += `</h5>`
-                finalHTML += `<p>`
+                finalHTML += `<p class="stars">`
                 finalHTML +=  `${userRating}`
                 finalHTML += `</p>`
                 finalHTML +=`<p>`

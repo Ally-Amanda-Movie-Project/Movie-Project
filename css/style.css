@@ -94,13 +94,20 @@ body {
 /*--------------carousel------------------*/
 .carousel-caption{
     background-color: #e8b0ae;
+    border: black 4px solid;
     /*opacity:.50;*/
     font-family: 'Roboto Mono', monospace;
+    color: black;
 }
 .moviePoster {
     height: 475px;
 }
-
+#movieCarousel {
+    border: black 4px solid;
+}
+.stars {
+    font-size: 35px;
+}
 /*--------------to watch form------------------*/
 .watchlist {
     margin-bottom: 200px;
