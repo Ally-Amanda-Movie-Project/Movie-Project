@@ -186,7 +186,7 @@ function editMovie (id) {
     const movies = {
         "rating": editMovieRating,
 
-        "review": editMovieReview
+        "review": editMovieReview,
        
         "watch": editMovieWatch,
         "review": editMovieReview,
