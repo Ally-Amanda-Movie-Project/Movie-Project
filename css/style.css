@@ -91,7 +91,7 @@ body {
 /*--------------carousel------------------*/
 .carousel-caption{
     background-color: #e8b0ae;
-    opacity:.75;
+    /*opacity:.50;*/
     font-family: 'Roboto Mono', monospace;
 }
 
