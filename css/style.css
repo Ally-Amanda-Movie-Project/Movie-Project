@@ -13,8 +13,11 @@ body {
     background-color: #b0dcd6!important;
     border: black 4px solid;
     font-family: 'Roboto Mono', monospace;
-    font-size: 1.25em;
-
+    font-size: 1.5em;
+}
+.moveLinks{
+    position: relative;
+    top: 1em;
 }
 .nav-link:hover{
     text-decoration: underline;
